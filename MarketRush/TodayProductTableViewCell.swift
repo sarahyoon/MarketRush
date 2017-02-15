@@ -24,7 +24,7 @@ extension TodayProductTableViewCell: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 8
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,7 +43,7 @@ extension TodayProductTableViewCell: UICollectionViewDelegateFlowLayout {
     //getting the size of items
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let itemsPerRow:CGFloat = 4.0
+        let itemsPerRow:CGFloat = 3.0
         let hardCodedPadding: CGFloat = 5.0
         let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding
         let itemHeight = collectionView.bounds.height - (2*hardCodedPadding)

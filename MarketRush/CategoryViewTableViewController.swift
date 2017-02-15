@@ -88,7 +88,7 @@ class CategoryViewTableViewController: UITableViewController {
         else if indexPath.section == 1
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-            
+            cell.categoryTitle?.text = categoryTitle[1][indexPath.row]
             
             return cell
             
@@ -98,7 +98,7 @@ class CategoryViewTableViewController: UITableViewController {
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-            
+            cell.categoryTitle?.text = categoryTitle[2][indexPath.row]
             return cell
             
         }
@@ -109,7 +109,8 @@ class CategoryViewTableViewController: UITableViewController {
         
         if indexPath.section == 0
         {
-            return 150        }
+            return 160
+        }
             
         else{
             return 70
