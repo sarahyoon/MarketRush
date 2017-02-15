@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ED0406F2C1A92E358CC9132 /* Pods_MarketRush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */; };
 		E8EE4FC51E540678007E3667 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE4FC41E540678007E3667 /* AppDelegate.swift */; };
 		E8EE4FC71E540678007E3667 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE4FC61E540678007E3667 /* ViewController.swift */; };
 		E8EE4FCA1E540678007E3667 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EE4FC81E540678007E3667 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketRush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1915AC7D66431D364CD5AC24 /* Pods-MarketRush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.debug.xcconfig"; sourceTree = "<group>"; };
+		AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.release.xcconfig"; sourceTree = "<group>"; };
 		E8EE4FC11E540678007E3667 /* MarketRush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketRush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4FC41E540678007E3667 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8EE4FC61E540678007E3667 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED0406F2C1A92E358CC9132 /* Pods_MarketRush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A37C4F4FA967E8683450A57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C352DCBA2BC94499A10DA206 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1915AC7D66431D364CD5AC24 /* Pods-MarketRush.debug.xcconfig */,
+				AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E8EE4FB81E540678007E3667 = {
 			isa = PBXGroup;
 			children = (
 				E8EE4FC31E540678007E3667 /* MarketRush */,
 				E8EE4FC21E540678007E3667 /* Products */,
+				C352DCBA2BC94499A10DA206 /* Pods */,
+				8A37C4F4FA967E8683450A57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8EE4FD31E540678007E3667 /* Build configuration list for PBXNativeTarget "MarketRush" */;
 			buildPhases = (
+				5BAF18CE502B8B6EEFCF6C56 /* [CP] Check Pods Manifest.lock */,
 				E8EE4FBD1E540678007E3667 /* Sources */,
 				E8EE4FBE1E540678007E3667 /* Frameworks */,
 				E8EE4FBF1E540678007E3667 /* Resources */,
+				3A1C175436588A669E03B102 /* [CP] Embed Pods Frameworks */,
+				F267E861D0E6ACDFD4F77CD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A1C175436588A669E03B102 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BAF18CE502B8B6EEFCF6C56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F267E861D0E6ACDFD4F77CD5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E8EE4FBD1E540678007E3667 /* Sources */ = {
@@ -257,6 +332,7 @@
 		};
 		E8EE4FD41E540678007E3667 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1915AC7D66431D364CD5AC24 /* Pods-MarketRush.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6GK85R4835;
@@ -270,6 +346,7 @@
 		};
 		E8EE4FD51E540678007E3667 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6GK85R4835;
