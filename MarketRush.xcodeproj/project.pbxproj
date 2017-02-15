@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2ED0406F2C1A92E358CC9132 /* Pods_MarketRush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */; };
+		E8E0EC861E547DA000FFC7EA /* CategoryViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC851E547DA000FFC7EA /* CategoryViewTableViewController.swift */; };
+		E8E0EC881E5484A500FFC7EA /* TodayProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC871E5484A500FFC7EA /* TodayProductTableViewCell.swift */; };
+		E8E0EC8A1E5484F000FFC7EA /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC891E5484F000FFC7EA /* CategoryTableViewCell.swift */; };
+		E8E0EC8C1E54869800FFC7EA /* TodayProductCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC8B1E54869800FFC7EA /* TodayProductCollectionCell.swift */; };
+		E8E0EC8F1E54894100FFC7EA /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC8E1E54894100FFC7EA /* ProductData.swift */; };
+		E8E0EC911E54999300FFC7EA /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC901E54999300FFC7EA /* Products.swift */; };
+		E8E0EC931E5499C200FFC7EA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E0EC921E5499C200FFC7EA /* Product.swift */; };
 		E8EE4FC51E540678007E3667 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE4FC41E540678007E3667 /* AppDelegate.swift */; };
 		E8EE4FC71E540678007E3667 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE4FC61E540678007E3667 /* ViewController.swift */; };
 		E8EE4FCA1E540678007E3667 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EE4FC81E540678007E3667 /* Main.storyboard */; };
@@ -19,6 +26,13 @@
 		18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketRush.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1915AC7D66431D364CD5AC24 /* Pods-MarketRush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.debug.xcconfig"; sourceTree = "<group>"; };
 		AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.release.xcconfig"; sourceTree = "<group>"; };
+		E8E0EC851E547DA000FFC7EA /* CategoryViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewTableViewController.swift; sourceTree = "<group>"; };
+		E8E0EC871E5484A500FFC7EA /* TodayProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayProductTableViewCell.swift; sourceTree = "<group>"; };
+		E8E0EC891E5484F000FFC7EA /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		E8E0EC8B1E54869800FFC7EA /* TodayProductCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayProductCollectionCell.swift; sourceTree = "<group>"; };
+		E8E0EC8E1E54894100FFC7EA /* ProductData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
+		E8E0EC901E54999300FFC7EA /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		E8E0EC921E5499C200FFC7EA /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E8EE4FC11E540678007E3667 /* MarketRush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketRush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4FC41E540678007E3667 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8EE4FC61E540678007E3667 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +71,41 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E804EA4C1E5425E600657D20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8E0EC901E54999300FFC7EA /* Products.swift */,
+				E8E0EC921E5499C200FFC7EA /* Product.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E804EA4D1E5425F300657D20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8E0EC891E5484F000FFC7EA /* CategoryTableViewCell.swift */,
+				E8E0EC8B1E54869800FFC7EA /* TodayProductCollectionCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E804EA4E1E54260500657D20 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E8E0EC851E547DA000FFC7EA /* CategoryViewTableViewController.swift */,
+				E8E0EC871E5484A500FFC7EA /* TodayProductTableViewCell.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E8E0EC8D1E54892000FFC7EA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E8E0EC8E1E54894100FFC7EA /* ProductData.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		E8EE4FB81E540678007E3667 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +127,10 @@
 		E8EE4FC31E540678007E3667 /* MarketRush */ = {
 			isa = PBXGroup;
 			children = (
+				E8E0EC8D1E54892000FFC7EA /* Data */,
+				E804EA4D1E5425F300657D20 /* View */,
+				E804EA4C1E5425E600657D20 /* Model */,
+				E804EA4E1E54260500657D20 /* Controller */,
 				E8EE4FC41E540678007E3667 /* AppDelegate.swift */,
 				E8EE4FC61E540678007E3667 /* ViewController.swift */,
 				E8EE4FC81E540678007E3667 /* Main.storyboard */,
@@ -212,8 +265,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8E0EC861E547DA000FFC7EA /* CategoryViewTableViewController.swift in Sources */,
+				E8E0EC881E5484A500FFC7EA /* TodayProductTableViewCell.swift in Sources */,
+				E8E0EC931E5499C200FFC7EA /* Product.swift in Sources */,
 				E8EE4FC71E540678007E3667 /* ViewController.swift in Sources */,
 				E8EE4FC51E540678007E3667 /* AppDelegate.swift in Sources */,
+				E8E0EC8A1E5484F000FFC7EA /* CategoryTableViewCell.swift in Sources */,
+				E8E0EC911E54999300FFC7EA /* Products.swift in Sources */,
+				E8E0EC8C1E54869800FFC7EA /* TodayProductCollectionCell.swift in Sources */,
+				E8E0EC8F1E54894100FFC7EA /* ProductData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +437,7 @@
 				E8EE4FD51E540678007E3667 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
