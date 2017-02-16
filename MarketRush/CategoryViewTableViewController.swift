@@ -31,14 +31,28 @@ class CategoryViewTableViewController: UITableViewController {
         
         categoryTitle = [[],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
         
-        //오늘의 상품 정보에 대한 노티
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTodayProductInfo(noti:)), name: DidReceiveTodayProductInfo, object: nil)
+        //add observer for product api calls
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
         //오늘의 상품 api 호출 (식품)
-        callTodayProductApi()
+        callProductApi(query: "식품", start: 2, display: 20)
+        
+        
     }
+    
+    //remove observer
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear")
 
-
+        NotificationCenter.default.removeObserver(self, name: DidReceiveProductInfo, object: nil)
+    }
+    
+    //
+    func didReceiveProductInfo(noti: Notification) {
+        self.tableView.reloadSections(IndexSet([0]), with: UITableViewRowAnimation.automatic)
+    }
+    
 
     // MARK: - Table view data source
 
@@ -118,9 +132,7 @@ class CategoryViewTableViewController: UITableViewController {
         
     }
     
-    func didReceiveTodayProductInfo(noti: Notification) {
-        self.tableView.reloadSections(IndexSet([0]), with: UITableViewRowAnimation.automatic)
-    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -156,14 +168,33 @@ class CategoryViewTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
+        //해당카테고리로 이동하면서 관련 타이틀 갖고가기
+        if(segue.identifier == "gotoSubCategory")
+        {
+            if let destination = segue.destination as? SubCategoryCollectionViewController{
+                let path = tableView.indexPathForSelectedRow
+                let section = tableView.indexPathForSelectedRow?.section
+                
+                destination.selectedCategory = categoryTitle[section!][(path?.row)!]}
+        
+        }
+        
+        if (segue.identifier == "gotoDetailfromToday"){
+            if let todayProductImageCell = sender as? TodayProductCollectionCell, let detailProductView = segue.destination as? ProductDetailViewController{
+                let product = todayProductImageCell.product
+                detailProductView.product = product
+                
+                //hide bottom bar
+                detailProductView.hidesBottomBarWhenPushed = true
+                
+                
+            }
+        }
 
+    }
 }

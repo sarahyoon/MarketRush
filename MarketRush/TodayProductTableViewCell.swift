@@ -31,7 +31,7 @@ extension TodayProductTableViewCell: UICollectionViewDataSource{
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayProductCell", for: indexPath) as! TodayProductCollectionCell
-        cell.product = ProductData.sharedInstance.todayProducts?[indexPath.row]
+        cell.product = ProductData.sharedInstance.mrProducts?[indexPath.row]
         
         return cell
     }

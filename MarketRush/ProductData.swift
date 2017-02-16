@@ -11,17 +11,19 @@ import UIKit
 //
 
 
-let DidReceiveTodayProductInfo = Notification.Name(rawValue: "DidReceiveTodayProduct")
+let DidReceiveProductInfo = Notification.Name(rawValue: "DidReceiveProduct")
+
 class ProductData{
     
     static let sharedInstance = ProductData()
     
     
-    //오늘의 상품
-    var todayProducts: [Product]? {
+    
+    var mrProducts: [Product]? {
         didSet {
-            NotificationCenter.default.post(name: DidReceiveTodayProductInfo, object: nil)
+            NotificationCenter.default.post(name: DidReceiveProductInfo, object: nil)
         }
     }
+    
     
 }
