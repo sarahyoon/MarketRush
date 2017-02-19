@@ -18,9 +18,7 @@ class SubCategoryCollectionViewController: UICollectionViewController {
     var meatSection = ["돼지고기","소고기","닭고기"]
     var drinkSection = ["생수/탄산수", "커피","차"]
     var dairySection = ["우유/두유", "치즈", "요구르트"]
-    
-//    //Instance
-//    var vegeProduct = ProductData.sharedInstance.vegeProducts
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +26,26 @@ class SubCategoryCollectionViewController: UICollectionViewController {
         print(selectedCategory)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
+
+        //셀렉티드 카테고리별로 쿼리 다르게 날리기!
         
-        callProductApi(query: "채소", start: 2, display: 20)
+        switch selectedCategory {
+            
+        case Constants.VEGE:
+            
+            return callProductApi(query: "샐러드", start: 2, display: 20)
+            
+        case Constants.BREAD:
+            
+            return callProductApi(query: "식빵", start: 3, display: 20)
+            
+        case Constants.DAIRY:
+            
+            return callProductApi(query: "치즈", start: 1, display: 20)
+        default:
+            return callProductApi(query: "소고기", start: 1, display: 20)
+        }
+
         
         
 
@@ -46,15 +62,20 @@ class SubCategoryCollectionViewController: UICollectionViewController {
     }
 
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+   
+        if (segue.identifier == "gotoDetailViewFromSub"){
+            if let subCategoryImageCell = sender as? SubCategoryCollectionViewCell, let detailProductView = segue.destination as? ProductDetailViewController{
+                let product = subCategoryImageCell.item
+                detailProductView.item = product
+            }
+        }
     }
-    */
+
 
     // MARK: UICollectionViewDataSource
 
@@ -90,7 +111,7 @@ class SubCategoryCollectionViewController: UICollectionViewController {
             return dairySection.count
             
         default:
-            return ProductData.sharedInstance.mrProducts!.count
+            return (DataController.sharedInstance().items?.count)!
         }
 
     }
@@ -98,10 +119,11 @@ class SubCategoryCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoryCell", for: indexPath) as! SubCategoryCollectionViewCell
-        cell.product = ProductData.sharedInstance.mrProducts?[indexPath.row]
+        cell.item = DataController.sharedInstance().items?[indexPath.row]
         
         return cell
     }
+    
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SubCategoryHeader", for: indexPath as IndexPath) as! SubCategoryHeaderCollectionReusableView
@@ -112,7 +134,7 @@ class SubCategoryCollectionViewController: UICollectionViewController {
     }
     
 
-
+    
     // MARK: UICollectionViewDelegate
 
     /*

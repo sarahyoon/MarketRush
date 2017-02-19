@@ -14,12 +14,12 @@ class SubCategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subCategoryImageName: UILabel!
     
     //오늘의 상품 데이터주소 불러와 담기
-    var product: Product? = nil{
+    var item: Item? = nil{
         
         //product 값이 변경된 직후에 호출
         didSet{
-            if let product = product,
-                let url = URL(string: product.image!){
+            if let product = item,
+                let url = URL(string: product.item_image!){
                 
                 self.subCategoryImage.af_setImage(withURL: url, completion: {
                     (image) in
@@ -28,7 +28,7 @@ class SubCategoryCollectionViewCell: UICollectionViewCell {
                 
             }
             //todayProductImage.layer.borderWidth = 1.0
-            self.subCategoryImageName.text = product?.title
+            self.subCategoryImageName.text = item?.item_title
             
         }
     }

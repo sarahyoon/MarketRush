@@ -7,20 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
+import Realm
 
 class ProductDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var product: Product!
+    
+    var item: Item!
+        //var items: Results<Item>!
+    
     var list = ["상품이름", "가격", "쇼핑몰이름"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //4
         return self.list.count-1
@@ -31,7 +34,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         if indexPath.row == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailImageCell") as! DetailImageTableViewCell
-            if let url = NSURL(string:product.image!){
+            if let url = NSURL(string:item.item_image!){
                 cell.productimage.af_setImage(withURL: url as URL)
             }
             return cell
@@ -41,11 +44,11 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             //let row = self.list[indexPath.row] //2번째 row부터
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailDescriptionCell") as! DetailDescriptionTableViewCell
             
-            cell.productName.text = product.title
+            cell.productName.text = item.item_title
             cell.price.text = "가격"
-            cell.productPrice.text = product.price
+            cell.productPrice.text = item.item_price
             cell.mallName.text = "쇼핑몰"
-            cell.productMall.text = product.mallName
+            cell.productMall.text = item.item_mallName
 
             return cell
             
@@ -53,39 +56,134 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
 
-
     @IBAction func itemsToList(_ sender: Any) {
+
+        item.item_selectedDate = getCurrentDate() as NSDate?
         
-        let alertController : UIAlertController = UIAlertController(title: "", message: "장바구니에 담겼습니다!\r\n장바구니로 이동하시겠습니까?", preferredStyle: .alert)
-        let action_cancel = UIAlertAction.init(title: "Cancel", style: .cancel) { (UIAlertAction) -> Void in
+        
+        if ((ifIdExists(findId: item.item_id!)) == nil){
             
+            ItemList().create(item_title: item.item_title!, item_image: item.item_image!, item_mallName: item.item_mallName!, item_price: item.item_price!, item_amount: item.item_amount, item_selectedDate: item.item_selectedDate!, item_id: item.item_id!, isSaved: item.isSaved)
+            
+            let alertController: UIAlertController = UIAlertController(title: "", message: "선택한 상품이 장바구니에 담겼습니다!!", preferredStyle: .alert)
+            
+            let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style: .cancel)
+            {   (UIAlertAction) -> Void in }
+                alertController.addAction(action_cancel)
+          
+            let action_add = UIAlertAction.init(title: "장바구니 확인", style:.default)
+            {
+                (UIAlertAction) -> Void in
+                
+                let storyBoard = UIStoryboard(name:"Main", bundle: nil)
+                let gotoDetailShoppingListView = storyBoard.instantiateViewController(withIdentifier: "DetailShoppingListViewController") as! DetailShoppingListViewController
+//                let realm = try? Realm()
+//               gotoDetailShoppingListView.items = realm?.objects(Item.self)
+                self.navigationController?.pushViewController(gotoDetailShoppingListView, animated: true)
+            }
+            
+            alertController.addAction(action_add)
+            present(alertController, animated: true, completion: nil)
         }
-        alertController.addAction(action_cancel)
         
-        let action_add = UIAlertAction.init(title: "네", style: .default)
-        { (UIAlertAction) -> Void in
+        else{
+            let alertController: UIAlertController = UIAlertController(title: "", message: "이미 선택하신 제품입니다.", preferredStyle: .alert)
+            let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style:.cancel){
+                (UIAlertAction) -> Void in }
+            alertController.addAction(action_cancel)
             
-            let storyBoard = UIStoryboard(name:"Main", bundle:nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailShoppingListViewController") as! DetailShoppingListViewController
-            self.present(nextViewController, animated:true, completion:nil)
-            
-//            let todoItem = TodoItem() //initiate realm
-//            todoItem.detail = textField_todo.text! //set details
-//            todoItem.status = 0
+            let action_add = UIAlertAction.init(title: "장바구니 확인", style: .default)
+            {  (UIAlertAction) -> Void in
+                
+                let storyBoard = UIStoryboard(name:"Main", bundle: nil)
+                let gotoDetailShoppingListView = storyBoard.instantiateViewController(withIdentifier: "DetailShoppingListViewController") as! DetailShoppingListViewController
+                self.navigationController?.pushViewController(gotoDetailShoppingListView, animated: true)
+            }
+                alertController.addAction(action_add)
+                present(alertController, animated: true, completion: nil)
+            }
+    }
+        
+//        //새로 선택한 제품
+//        if (item.isSaved == false)
+//        {
+//            ItemList().create(item_title: item.item_title!, item_image: item.item_image!, item_mallName: item.item_mallName!, item_price: item.item_price!, item_amount: item.item_amount, item_selectedDate: item.item_selectedDate!, item_id: item.item_id!, isSaved: item.isSaved)
 //            
-//            //save realm persistent
-//            try! self.realm.write({
-//                self.realm.add(todoItem)
-//                self.tableView.insertRows(at: [IndexPath.init(row: self.todoList.count-1, section: 0)], with: .automatic)
-//            })
-            
+//            let alertController : UIAlertController = UIAlertController(title: "", message: "선택한 상품이 장바구니에 담겼습니다.", preferredStyle: .alert)
+//            let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style: .cancel)
+//            { (UIAlertAction) -> Void in
+//            }
+//            alertController.addAction(action_cancel)
+//            
+//            
+//            let action_add = UIAlertAction.init(title: "장바구니 확인", style: .default)
+//            {
+//                (UIAlertAction) -> Void in
+//                
+//                let storyBoard = UIStoryboard(name:"Main", bundle:nil)
+//                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailShoppingListViewController") as! DetailShoppingListViewController
+//                nextViewController.items = realm.objects(Item.self)
+//                self.navigationController?.pushViewController(nextViewController, animated: true)
+//            }
+//            
+//            alertController.addAction(action_add)
+//            present(alertController, animated: true, completion: nil)
+//        }
+//        
+//        //if item.isSaved == false
+//        else {
+//                let alertController: UIAlertController = UIAlertController(title: "", message: "이미 선택하신 제품입니다.", preferredStyle: .alert)
+//            
+//                        let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style: .cancel) { (UIAlertAction) -> Void in
+//                        }
+//                        alertController.addAction(action_cancel)
+//            
+//                        let action_add = UIAlertAction.init(title: "장바구니 확인", style: .default)
+//                        {
+//                            (UIAlertAction) -> Void in
+//                            let storyBoard = UIStoryboard(name:"Main", bundle:nil)
+//                            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailShoppingListViewController") as! DetailShoppingListViewController
+//            //                   nextViewController.product = self.product
+//            
+//                            self.navigationController?.pushViewController(nextViewController, animated: true)
+//                        }
+//            alertController.addAction(action_add)
+//            present(alertController, animated: true, completion: nil)
+//        }
+
+//    }
+    
+    
+    func getCurrentDate() -> Date {
+        
+        var now:Date = Date()
+        var calendar = Calendar.current
+        let timezone = NSTimeZone.system
+        calendar.timeZone = timezone
+        //timezone을 사용해서 date의 components를 지정해서 가져옴.
+        let anchorComponets = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: now)
+        
+        let getDateFromDateComponents = calendar.date(from: anchorComponets)
+        if let getCurrentDate = getDateFromDateComponents {
+            now = getCurrentDate
         }
-        alertController.addAction(action_add)
-        
-        present(alertController, animated: true, completion: nil)
-        
+        return now
     }
     
+    func ifIdExists(findId: String) -> Item?{
+        
+        let predicate = NSPredicate(format: "item_id = %@", findId)
+        let realm = try? Realm()
+        let object = realm?.objects(Item.self).filter(predicate).first
+        if object?.item_id == findId {
+            
+            return object
+            
+        }
+        return nil
+    }
+    
+
     
 
     /*

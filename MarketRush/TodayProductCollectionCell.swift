@@ -15,12 +15,12 @@ class TodayProductCollectionCell: UICollectionViewCell {
     @IBOutlet weak var todayProductName: UILabel!
     
     //오늘의 상품 데이터주소 불러와 담기
-    var product: Product? = nil{
+    var item: Item? = nil{
         
         //product 값이 변경된 직후에 호출
         didSet{
-            if let product = product,
-                let url = URL(string: product.image!){
+            if let product = item,
+                let url = URL(string: product.item_image!){
                 
                 self.todayProductImage.af_setImage(withURL: url, completion: {
                     (image) in
@@ -29,8 +29,7 @@ class TodayProductCollectionCell: UICollectionViewCell {
                 
             }
             //todayProductImage.layer.borderWidth = 1.0
-            self.todayProductName.text = product?.title
-            
+            self.todayProductName.text = item?.item_title
         }
     }
 
