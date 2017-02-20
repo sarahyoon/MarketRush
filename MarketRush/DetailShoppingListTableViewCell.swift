@@ -32,12 +32,14 @@ class DetailShoppingListTableViewCell: UITableViewCell {
         
         if let num = Int(self.numOfItemInput.text!) {
             number = num + 1
-            
-            
+           price = Int(productPrice.text!)!
+            price = number*price
             
         }
         
         self.numOfItemInput.text = "\(number)"
+        self.productPrice.text = "\(price)"
+        
         
         
         self.delegate?.detailShoppingListTableViewCellDidChangeNumber(cell: self)
@@ -45,9 +47,15 @@ class DetailShoppingListTableViewCell: UITableViewCell {
     
     @IBAction func clickMinusButton(sender: UIButton) {
         var number = 0
+        var price = 0
         
         if let num = Int(self.numOfItemInput.text!) {
             number = num - 1
+            
+            price = Int(productPrice.text!)!
+            print(number,price)
+            
+
         }
         
         if number < 1 {
@@ -55,6 +63,7 @@ class DetailShoppingListTableViewCell: UITableViewCell {
         }
         
         self.numOfItemInput.text = "\(number)"
+        self.productPrice.text = "\(price)"
         
         self.delegate?.detailShoppingListTableViewCellDidChangeNumber(cell: self)
     }

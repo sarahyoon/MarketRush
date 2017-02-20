@@ -149,7 +149,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hwa-ck-Fdh" id="rJp-2U-JDM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmC-FJ-ejF">
@@ -187,7 +187,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5F-PE-dGN">
-                                                    <rect key="frame" x="298" y="107" width="42" height="21"/>
+                                                    <rect key="frame" x="256" y="107" width="111" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -208,9 +208,8 @@
                                     <outlet property="delegate" destination="EWj-Un-ar6" id="fO7-Yg-IxQ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ay-pb-NLr">
-                                <rect key="frame" x="0.0" y="428" width="375" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ay-pb-NLr">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="saveButton:" destination="EWj-Un-ar6" eventType="touchUpInside" id="U4e-EJ-5NA"/>
@@ -218,6 +217,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Ay-pb-NLr" firstAttribute="leading" secondItem="8DV-ja-FFW" secondAttribute="leading" id="3qM-A0-OED"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ay-pb-NLr" secondAttribute="trailing" id="PbC-ST-p76"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ay-pb-NLr" secondAttribute="bottom" id="gsH-fb-fX8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="MarketRush" id="00f-QI-UZl"/>
                     <connections>

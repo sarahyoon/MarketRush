@@ -1,0 +1,6 @@
+framework module Pods_MarketRush {
+  umbrella header "Pods-MarketRush-umbrella.h"
+
+  export *
+  module * { export * }
+}

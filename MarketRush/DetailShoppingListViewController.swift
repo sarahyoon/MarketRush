@@ -49,7 +49,8 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.items.count}
+        return itemList.items.count
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell", for: indexPath) as! DetailShoppingListTableViewCell
@@ -57,6 +58,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         cell.productName.text = itemList.items[indexPath.row].item_title
         print(itemList.items[indexPath.row].item_id)
         cell.productPrice.text = itemList.items[indexPath.row].item_price
+        
         cell.delegate = self
         
         if let url = NSURL(string:(itemList.items[indexPath.row].item_image!)){
@@ -117,6 +119,8 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
             realm?.beginWrite()
             
         self.itemList.items[indexPath.row].item_amount = Int(cell.numOfItemInput.text!)!
+        self.itemList.items[indexPath.row].item_price = cell.productPrice.text
+    
         try! realm?.commitWrite()
         }
     }
