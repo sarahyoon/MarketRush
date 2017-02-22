@@ -11,12 +11,6 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
-// 대분류: 신선식품, 가공식품
-// 중분류: 신선식품[야채, 과일, 곡류, 육류, 빵, 음료]
-//       가공식품[견과류, 면류/쌀, 유제품, 소스류/오일류]
-// search bar 추가
-// 음성인식 api 추가
-
 class CategoryViewTableViewController: UITableViewController {
 
     //Section
@@ -25,11 +19,16 @@ class CategoryViewTableViewController: UITableViewController {
     
     //카테고리별 제목 배열
     var categoryTitle:[[String]]!
+    //카테고리별 이미지 배열
+    var categoryImage:[[String]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categoryTitle = [[],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
+        
+        categoryImage = [[],["vege150.png","fruits150.png","cereal150.png","meat150.png","bread150.png","drink150.png"],["dairy150.png","nuts150.png","rice150.png","oil150.png"]]
+        
         
         //add observer for product api calls
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
@@ -37,6 +36,8 @@ class CategoryViewTableViewController: UITableViewController {
         //오늘의 상품 api 호출 (식품)
         callProductApi(query: "식품", start: 2, display: 20)
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
     }
     
@@ -62,7 +63,23 @@ class CategoryViewTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
+        header.backgroundColor? = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.8)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 15))
+        footerView.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.8)
+        return footerView
+    }
 
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 15.0
+        
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //section별 row 갯수
         switch section
@@ -88,12 +105,13 @@ class CategoryViewTableViewController: UITableViewController {
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0
             
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayProductCell", for: indexPath) as! TodayProductTableViewCell
             cell.todayProductCollectionView.reloadData()
-           
+    
             return cell
         }
             
@@ -101,8 +119,10 @@ class CategoryViewTableViewController: UITableViewController {
         else if indexPath.section == 1
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+            cell.selectionStyle = .none
             cell.categoryTitle?.text = categoryTitle[1][indexPath.row]
-            
+            cell.categoryImage.image = UIImage(named: categoryImage[1][indexPath.row])
+
             return cell
             
         }
@@ -111,22 +131,38 @@ class CategoryViewTableViewController: UITableViewController {
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+            cell.selectionStyle = .none
             cell.categoryTitle?.text = categoryTitle[2][indexPath.row]
+            cell.categoryImage.image = UIImage(named: categoryImage[2][indexPath.row])
             return cell
             
         }
     }
- 
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
+    {
+        let cell  = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
+        cell.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
+        cell.categoryTitle.textColor = UIColor.white
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell  = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
+        cell.backgroundColor = .clear
+        cell.categoryTitle.textColor = UIColor.black
+    }
+    
+
     //tablecell별 높이 설정
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0
         {
-            return 160
+            return 170
         }
             
         else{
-            return 70
+            return 90
         }
         
     }

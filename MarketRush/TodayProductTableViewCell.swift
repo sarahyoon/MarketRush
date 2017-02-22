@@ -33,6 +33,12 @@ extension TodayProductTableViewCell: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayProductCell", for: indexPath) as! TodayProductCollectionCell
         cell.item = DataController.sharedInstance().items?[indexPath.row]
         
+        cell.todayProductImage.layer.borderWidth = 0.5
+        cell.todayProductImage.layer.borderColor = UIColor.lightGray.cgColor
+        
+        cell.todayProductName.layer.borderWidth = 0.5
+        cell.todayProductName.layer.borderColor = UIColor.lightGray.cgColor
+        
         return cell
     }
     

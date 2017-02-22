@@ -28,8 +28,15 @@ class SubCategoryCollectionViewCell: UICollectionViewCell {
                 
             }
             //todayProductImage.layer.borderWidth = 1.0
-            self.subCategoryImageName.text = item?.item_title
+            let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+            self.subCategoryImageName.text = string
             
+            subCategoryImage.layer.borderColor = UIColor.lightGray.cgColor
+            subCategoryImage.layer.borderWidth = 0.8
+            
+            subCategoryImageName.layer.borderWidth = 0.8
+            subCategoryImageName.layer.borderColor = UIColor.lightGray.cgColor
         }
+        
     }
 }

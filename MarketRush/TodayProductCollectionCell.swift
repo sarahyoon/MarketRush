@@ -29,7 +29,10 @@ class TodayProductCollectionCell: UICollectionViewCell {
                 
             }
             //todayProductImage.layer.borderWidth = 1.0
-            self.todayProductName.text = item?.item_title
+            
+            let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+            
+            self.todayProductName.text = string
         }
     }
 

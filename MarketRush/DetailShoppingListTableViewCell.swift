@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 
 protocol DetailShoppingListTableViewCellDelegate {
@@ -26,14 +27,21 @@ class DetailShoppingListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productPrice: UILabel!
     
+    var priceForOne: Int = 0
+    var number = 0
+    var price = 0
+    
+    
+    
     @IBAction func clickPlusButton(sender: UIButton) {
-        var number = 0
-        var price = 0
-        
+
         if let num = Int(self.numOfItemInput.text!) {
             number = num + 1
-           price = Int(productPrice.text!)!
-            price = number*price
+            
+            price = priceForOne * number
+            
+//            price = Int(productPrice.text!)!
+//            price = number*price
             
         }
         
@@ -46,14 +54,13 @@ class DetailShoppingListTableViewCell: UITableViewCell {
     }
     
     @IBAction func clickMinusButton(sender: UIButton) {
-        var number = 0
-        var price = 0
+//        var number = 0
+//        var price = 0
         
         if let num = Int(self.numOfItemInput.text!) {
             number = num - 1
             
-            price = Int(productPrice.text!)!
-            print(number,price)
+            price = priceForOne * number
             
 
         }
@@ -69,22 +76,15 @@ class DetailShoppingListTableViewCell: UITableViewCell {
     }
     
     
-    //tableviewcell에다가 버튼 액션을 줘서 테이블뷰에서 컨트롤? 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        self.productImage.layer.borderWidth = 0.6
+        self.productImage.layer.borderColor = UIColor.lightGray.cgColor
+        
+    }
+
     
-    
-//    var product: Product? {
-//        didSet {
-//
-//            if let product = product, let url = URL(string: product.image!){
-//                
-//                self.productImage.af_setImage(withURL: url, completion: {
-//                    (image) in
-//                    self.productImage.image = image.result.value
-//                })
-//            }
-//            
-//
-//        }
-//    }
 
 }

@@ -10,8 +10,8 @@ import UIKit
 import RealmSwift
 import Realm
 
-//현재 장바구니에 담은 상품 리스트var기
-class DetailShoppingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailShoppingListTableViewCellDelegate {
+//현재 장바구니에 담은 상품 리스트
+class DetailShoppingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailShoppingListTableViewCellDelegate{
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,47 +23,82 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     @IBOutlet weak var totalSumLabel: UILabel!
     @IBOutlet weak var subTotalPrice: UILabel!
     
+    @IBOutlet weak var saveButton: UIButton!
+    
     let realm = try? Realm()
     
-    //var items: Results<Item>!
-    //var items = List<Item>()
     var item: Item?
-    var itemList = ItemList()
+    var itemList = ListofItems()
+
+    //today Date
+    var todayDate: String = "\(NSDate())"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.itemList.items = realm?.objects(Item.self)
+
+        updateTotalItem()
+        self.tableView.reloadData()
+        
+    NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       //self.items = realm?.objects(Item.self)
-       self.itemList.items = realm?.objects(Item.self)
-       updateTotalItem()
-
-        //print(myitem?.count)
+    
+        let today = getCurrentDate()
         
         
-    NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
+        //updateTotalItem()
+        
+
         
         
         //date.text = realm?.objects(Item.self).value(forKey: "\(item.item_selectedDate)") as! String?
         //self.item = (realm?.object(ofType: Item.self, forPrimaryKey: item.item_id))!
     }
     
+        func getCurrentDate() -> String
+        {
+        let currentDate = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        let dateString = dateFormatter.string(from: currentDate as Date)
+        
+        return dateString
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(itemList.items.count)
+        
         return itemList.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell", for: indexPath) as! DetailShoppingListTableViewCell
-
-        cell.productName.text = itemList.items[indexPath.row].item_title
-        print(itemList.items[indexPath.row].item_id)
-        cell.productPrice.text = itemList.items[indexPath.row].item_price
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell", for: indexPath) as! DetailShoppingListTableViewCell
+        
+        let string = itemList.items[indexPath.row].item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+        
+        cell.productName.text = string
+       
+        //단품가격 저장
+        cell.priceForOne = Int(itemList.items[indexPath.row].item_price!)!
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let priceInt = Int(itemList.items[indexPath.row].item_price!)
+        cell.productPrice.text = numberFormatter.string(from: NSNumber(value: priceInt!))
         cell.delegate = self
+        
+        cell.numOfItemInput.text = "\(itemList.items[indexPath.row].item_amount)"
         
         if let url = NSURL(string:(itemList.items[indexPath.row].item_image!)){
             cell.productImage.af_setImage(withURL: url as URL)
         }
+        
+        
         return cell
         
     }
@@ -102,14 +137,20 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         self.itemNumber.text = (myitem?.count)?.description
     }
     
-    @IBAction func saveButton(_ sender: Any) {
+    func subTotal()-> Int
+    {
+        let sumArray:[String] = realm!.objects(Item.self).sorted(byKeyPath: "item_price").value(forKeyPath: "item_price") as! Array<String>
+        let sumArrayofInt: [Int] = sumArray.map{Int($0) ?? 0}
+        let sum = sumArrayofInt.reduce(0,+)
         
-        //날짜
-        //해당 상품 이미지, 이름, 가격 저장, 총 수량 저장
-        
+        return sum
         
     }
     
+    func numberFormatter()
+    {
+        
+    }
     
 
     func detailShoppingListTableViewCellDidChangeNumber(cell: DetailShoppingListTableViewCell) {
@@ -119,21 +160,21 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
             realm?.beginWrite()
             
         self.itemList.items[indexPath.row].item_amount = Int(cell.numOfItemInput.text!)!
+            
+//            let numberFormatter = NumberFormatter()
+//            numberFormatter.numberStyle = NumberFormatter.Style.decimal
+//            let priceInt = Int(itemList.items[indexPath.row].item_price!)
+//            cell.productPrice.text = numberFormatter.string(from: NSNumber(value: priceInt!))
+            
+            
         self.itemList.items[indexPath.row].item_price = cell.productPrice.text
-    
+        
+        self.subTotalPrice.text = "\(subTotal())"
+            
         try! realm?.commitWrite()
         }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

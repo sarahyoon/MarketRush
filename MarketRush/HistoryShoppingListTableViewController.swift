@@ -1,5 +1,5 @@
 //
-//  ShoppingListTableViewController.swift
+//  HistoryShoppingListTableViewController.swift
 //  MarketRush
 //
 //  Created by Sarah Yoon on 2017. 2. 18..
@@ -9,25 +9,28 @@
 import UIKit
 import RealmSwift
 
-class ShoppingListTableViewController: UITableViewController  {
+class HistoryShoppingListTableViewController: UITableViewController  {
 
-    var itemList = ItemList()
+    var listofItems = ListofItems()
     var item: Item?
-    
     let realm = try? Realm()
-
+    
+    var historyList = HistoryList()
+    var dates = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sortedItem = realm?.objects(Item.self).filter{$0.item_selectedDate != nil}.sorted { ($0.item_selectedDate!) as Date > ($1.item_selectedDate!) as Date}
-       // self.itemList.items = sortedItem
-      
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.historyList.list = realm?.objects(ListofItems.self)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        dates = ["Today", "20 Febuary, 2017", "19 Febuary, 2017"]
+        
+    //
+   //     print("historyview\(self.historyList.listSaveDate)")
+//        self.tabBarController?.tabBar.isHidden = false
+        
+//        let sortedItem = realm?.objects(Item.self).filter{$0.item_selectedDate != nil}.sorted { ($0.item_selectedDate!) as Date > ($1.item_selectedDate!) as Date}
+       // self.itemList.items = sortedItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,18 +47,30 @@ class ShoppingListTableViewController: UITableViewController  {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return itemList.items.count
+//        
+//        let listNum = realm?.objects(HistoryList.self).filter("listSaveDate.@count > 0")
+//        
+//        return (listNum?.count)!
+        print(historyList.list.count)
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryShoppingListTableViewCell", for: indexPath) as! HistoryShoppingListTableViewCell
         
-        cell.textLabel?.text = itemList.items[indexPath.row].item_title
+  //      cell.listSavedDate.text = "\(self.historyList.listSaveDate)"
+        cell.listSavedDate.text = dates[indexPath.row]
 
         return cell
     }
+    
+
+//    func saveDate() -> String {
+//        let history = [HistoryList]()
+//        self.history = realm?.objects(historyList.self)
+//        
+//        
+//    }
 
     /*
     // Override to support conditional editing of the table view.

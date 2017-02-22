@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class SubCategoryCollectionViewController: UICollectionViewController {
+class SubCategoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var selectedCategory: String!
     
@@ -20,13 +20,28 @@ class SubCategoryCollectionViewController: UICollectionViewController {
     var dairySection = ["우유/두유", "치즈", "요구르트"]
 
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellSpace: CGFloat = 10.0 * 3 // 셀 사이 간격 3개
+        
+        let cellWidth = (collectionView.bounds.size.width - cellSpace) / 2.0
+        let cellSize = CGSize(width: cellWidth, height: cellWidth + 40)
+        
+        return cellSize
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(selectedCategory)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
-
+        
+//        collectionView?.layoutMargins.left = 5.0
+//        collectionView?.layoutMargins.right = 5.0
+        
+    
+        
         //셀렉티드 카테고리별로 쿼리 다르게 날리기!
         
         switch selectedCategory {
@@ -61,6 +76,8 @@ class SubCategoryCollectionViewController: UICollectionViewController {
         self.collectionView?.reloadData()
     }
 
+    
+    
 
 
     // MARK: - Navigation

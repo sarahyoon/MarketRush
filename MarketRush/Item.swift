@@ -25,10 +25,6 @@ class Item: Object, Mappable{
     //number of item, default as 1
     dynamic var item_amount: Int = 1
     
-    //selected date
-    dynamic var item_selectedDate: NSDate?
-    
-    dynamic var isSaved: Bool = false
     
     
 
@@ -42,8 +38,6 @@ class Item: Object, Mappable{
         self.item_price = ""
         self.item_amount = 1
         self.item_id = ""
-        //init return?
-        self.isSaved = false
     }
     
     func mapping(map: Map) {
@@ -53,8 +47,6 @@ class Item: Object, Mappable{
         self.item_mallName <- map["mallName"]
         self.item_id <- map["productId"]
         self.item_amount <- map["item_amount"]
-        self.isSaved <- map["isSaved"]
-        self.item_selectedDate <- map["item_selectedDate"]
     }
     
     
@@ -64,6 +56,10 @@ class Item: Object, Mappable{
         return "item_id"
     }
     
+//    override class func indexedProperties() -> [String] {
+//        return ["item_price"]
+//    }
+//    
     
 }
 
