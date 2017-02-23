@@ -16,14 +16,14 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var tableView: UITableView!
     //1뷰
-//    @IBOutlet weak var date: UILabel!
-      @IBOutlet weak var itemNumber: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var itemNumber: UILabel!
     
     //2뷰
     @IBOutlet weak var totalSumLabel: UILabel!
     @IBOutlet weak var subTotalPrice: UILabel!
     
-    @IBOutlet weak var saveButton: UIButton!
+   // @IBOutlet weak var saveButton: UIButton!
     
     let realm = try? Realm()
     
@@ -32,15 +32,19 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
 
     //today Date
     var todayDate: String = "\(NSDate())"
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.itemList.items = realm?.objects(Item.self)
 
         updateTotalItem()
+        self.subTotalPrice.text = decimalFormat(num: "\(subTotal())")
+        
         self.tableView.reloadData()
         
     NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
+        
     }
     
     
@@ -48,26 +52,22 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         super.viewDidLoad()
     
         let today = getCurrentDate()
-        
-        
-        //updateTotalItem()
-        
-
-        
+        self.date.text = today
+  
         
         //date.text = realm?.objects(Item.self).value(forKey: "\(item.item_selectedDate)") as! String?
         //self.item = (realm?.object(ofType: Item.self, forPrimaryKey: item.item_id))!
     }
     
-        func getCurrentDate() -> String
-        {
+    func getCurrentDate() -> String
+    {
         let currentDate = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         let dateString = dateFormatter.string(from: currentDate as Date)
         
         return dateString
-        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(itemList.items.count)
@@ -86,10 +86,8 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         //단품가격 저장
         cell.priceForOne = Int(itemList.items[indexPath.row].item_price!)!
         
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = NumberFormatter.Style.decimal
-        let priceInt = Int(itemList.items[indexPath.row].item_price!)
-        cell.productPrice.text = numberFormatter.string(from: NSNumber(value: priceInt!))
+        
+       cell.productPrice.text = decimalFormat(num: itemList.items[indexPath.row].item_price!)
         cell.delegate = self
         
         cell.numOfItemInput.text = "\(itemList.items[indexPath.row].item_amount)"
@@ -98,9 +96,16 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
             cell.productImage.af_setImage(withURL: url as URL)
         }
         
-        
         return cell
         
+    }
+    
+    func decimalFormat (num:String)->String{
+        let numberFormmater = NumberFormatter()
+        numberFormmater.numberStyle = NumberFormatter.Style.decimal
+        let priceInt = Int(num)
+        
+        return numberFormmater.string(from: NSNumber(value:priceInt!))!
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -122,6 +127,9 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
             }
             tableView.deleteRows(at:[indexPath], with: .automatic)
             updateTotalItem()
+            
+            self.subTotalPrice.text = decimalFormat(num: "\(subTotal())")
+            self.tableView.reloadData()
             
         }
         
@@ -147,11 +155,6 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         
     }
     
-    func numberFormatter()
-    {
-        
-    }
-    
 
     func detailShoppingListTableViewCellDidChangeNumber(cell: DetailShoppingListTableViewCell) {
         
@@ -160,19 +163,14 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
             realm?.beginWrite()
             
         self.itemList.items[indexPath.row].item_amount = Int(cell.numOfItemInput.text!)!
-            
-//            let numberFormatter = NumberFormatter()
-//            numberFormatter.numberStyle = NumberFormatter.Style.decimal
-//            let priceInt = Int(itemList.items[indexPath.row].item_price!)
-//            cell.productPrice.text = numberFormatter.string(from: NSNumber(value: priceInt!))
-            
-            
         self.itemList.items[indexPath.row].item_price = cell.productPrice.text
         
         self.subTotalPrice.text = "\(subTotal())"
-            
+        
         try! realm?.commitWrite()
         }
+        cell.productPrice.text = decimalFormat(num: "\(cell.price)")
+        self.subTotalPrice.text = decimalFormat(num:"\(subTotal())")
     }
     
 

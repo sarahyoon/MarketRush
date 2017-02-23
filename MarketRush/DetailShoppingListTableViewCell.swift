@@ -14,7 +14,7 @@ protocol DetailShoppingListTableViewCellDelegate {
     func detailShoppingListTableViewCellDidChangeNumber(cell: DetailShoppingListTableViewCell)
 }
 
-class DetailShoppingListTableViewCell: UITableViewCell {
+class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     var delegate: DetailShoppingListTableViewCellDelegate?
     var item: Item!
@@ -31,7 +31,7 @@ class DetailShoppingListTableViewCell: UITableViewCell {
     var number = 0
     var price = 0
     
-    
+
     
     @IBAction func clickPlusButton(sender: UIButton) {
 
@@ -75,6 +75,8 @@ class DetailShoppingListTableViewCell: UITableViewCell {
         self.delegate?.detailShoppingListTableViewCellDidChangeNumber(cell: self)
     }
     
+
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,8 +85,11 @@ class DetailShoppingListTableViewCell: UITableViewCell {
         self.productImage.layer.borderWidth = 0.6
         self.productImage.layer.borderColor = UIColor.lightGray.cgColor
         
+        
+        
+        
     }
-
+    
     
 
 }

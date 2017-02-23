@@ -24,6 +24,7 @@ class ListofItems: Object{
         item.item_title = item_title
         item.item_image = item_image
         item.item_mallName = item_mallName
+//      item.item_price = decimalFormat(num:item_price)
         item.item_price = item_price
         item.item_amount = item_amount
         item.item_id = item_id

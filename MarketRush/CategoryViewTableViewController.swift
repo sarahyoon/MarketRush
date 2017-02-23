@@ -13,6 +13,9 @@ import ObjectMapper
 
 class CategoryViewTableViewController: UITableViewController {
 
+    
+    @IBOutlet var homeTableView: UITableView!
+    
     //Section
     var sections = ["오늘의 상품", "신선식품", "가공식품"]
     var categoryList = [["최신상품"],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
@@ -21,6 +24,12 @@ class CategoryViewTableViewController: UITableViewController {
     var categoryTitle:[[String]]!
     //카테고리별 이미지 배열
     var categoryImage:[[String]]!
+    
+    var item: Item?
+    var itemList = ListofItems()
+    //var resultSearchController = UISearchController()
+    let searchController = UISearchController(searchResultsController: nil)
+    var filterItems = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +48,22 @@ class CategoryViewTableViewController: UITableViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
+//        //search controller
+//        searchController.searchResultsUpdater = self
+//        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.searchBar.barTintColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 0.7)
+//        definesPresentationContext = true
+//        tableView.tableHeaderView = searchController.searchBar
     }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All"){
+        filterItems = itemList.items.filter{ item in
+            return (item.item_title?.lowercased().contains(searchText.lowercased()))!}
+        
+        tableView.reloadData()
+    }
+    
+    
     
     //remove observer
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,6 +77,7 @@ class CategoryViewTableViewController: UITableViewController {
         self.tableView.reloadSections(IndexSet([0]), with: UITableViewRowAnimation.automatic)
     }
     
+
 
     // MARK: - Table view data source
 
@@ -68,8 +93,13 @@ class CategoryViewTableViewController: UITableViewController {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
         header.backgroundColor? = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.8)
+        
+        
     }
     
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        <#code#>
+//    }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 15))
         footerView.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.8)
@@ -82,6 +112,8 @@ class CategoryViewTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //section별 row 갯수
+        
+    
         switch section
         {
         case 0:
@@ -99,14 +131,13 @@ class CategoryViewTableViewController: UITableViewController {
         default:
             NSLog("no count")
             return 1
-            
-        }
     }
 
-  
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0
+        
+      if indexPath.section == 0
             
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayProductCell", for: indexPath) as! TodayProductTableViewCell
@@ -192,6 +223,12 @@ class CategoryViewTableViewController: UITableViewController {
                 
             }
         }
+    }
 
+}
+
+extension CategoryViewTableViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 }

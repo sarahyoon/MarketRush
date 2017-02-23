@@ -55,11 +55,7 @@ class Item: Object, Mappable{
     {
         return "item_id"
     }
-    
-//    override class func indexedProperties() -> [String] {
-//        return ["item_price"]
-//    }
-//    
+
     
 }
 
