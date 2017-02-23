@@ -30,17 +30,15 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         return cellSize
     }
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
-//        collectionView?.layoutMargins.left = 5.0
-//        collectionView?.layoutMargins.right = 5.0
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         
-    
         
         //셀렉티드 카테고리별로 쿼리 다르게 날리기!
         
@@ -60,9 +58,6 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         default:
             return callProductApi(query: "소고기", start: 1, display: 20)
         }
-
-        
-        
 
         
     }
@@ -146,6 +141,9 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SubCategoryHeader", for: indexPath as IndexPath) as! SubCategoryHeaderCollectionReusableView
         
         header.subCategoryTitle.text = selectedCategory
+        header.subCategoryTitle.textColor = UIColor.gray
+        header.subCategoryTitle.font = UIFont.boldSystemFont(ofSize: 18.0)
+        header.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 1.0)
        
         return header
     }

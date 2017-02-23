@@ -17,6 +17,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         //var items: Results<Item>!
     
     var list = ["상품이름", "가격", "쇼핑몰이름"]
+    var section = ["1", "2"]
 
     //button outlet
     @IBOutlet weak var saveItemtoListButton: UIButton!
@@ -27,14 +28,18 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return section.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //4
-        return self.list.count-1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if indexPath.row == 0
+        if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailImageCell") as! DetailImageTableViewCell
             if let url = NSURL(string:item.item_image!){
@@ -77,8 +82,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             let action_cancel = UIAlertAction.init(title: "확인", style: .cancel)
             {   (UIAlertAction) -> Void in
                 
-                self.saveItemtoListButton.isHidden = true
-                self.tabBarController?.tabBar.isHidden = false
+                self.saveItemtoListButton.titleLabel?.textColor = UIColor(red: 55, green: 142, blue: 109, alpha: 0.3)
             }
             
             alertController.addAction(action_cancel)
@@ -89,8 +93,8 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             //이미 장바구니에 담은 제품일 경우
         else{
             
-            self.saveItemtoListButton.isHidden = true
-
+            saveItemtoListButton.titleLabel?.textColor = UIColor(red: 55, green: 142, blue: 109, alpha: 0.3)
+            
             let alertController: UIAlertController = UIAlertController(title: "", message: "이미 선택하신 제품입니다.", preferredStyle: .alert)
             let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style:.cancel){
                 (UIAlertAction) -> Void in }
@@ -100,7 +104,14 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
 
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
+    }
 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10.0
+        
+    }
     
     //product ID 확인
     func ifIdExists(findId: String) -> Item?{

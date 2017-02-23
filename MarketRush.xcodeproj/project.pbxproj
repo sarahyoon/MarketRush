@@ -207,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				E8E0EC9C1E54AF0700FFC7EA /* SubCategoryCollectionViewCell.swift */,
+				E8EDFFBC1E556EC700810F03 /* SubCategoryHeaderCollectionReusableView.swift */,
 			);
 			name = SubCategory;
 			sourceTree = "<group>";
@@ -223,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				E8EDFFB81E555C1B00810F03 /* SubCategoryCollectionViewController.swift */,
-				E8EDFFBC1E556EC700810F03 /* SubCategoryHeaderCollectionReusableView.swift */,
 			);
 			name = SubCategory;
 			sourceTree = "<group>";
