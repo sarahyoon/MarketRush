@@ -11,10 +11,12 @@ import RealmSwift
 import Realm
 
 //현재 장바구니에 담은 상품 리스트
-class DetailShoppingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailShoppingListTableViewCellDelegate{
+class DetailShoppingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailShoppingListTableViewCellDelegate, UITextFieldDelegate{
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateLabelView: UIView!
+    
     //1뷰
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var itemNumber: UILabel!
@@ -32,7 +34,6 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
 
     //today Date
     var todayDate: String = "\(NSDate())"
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,12 +54,27 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     
         let today = getCurrentDate()
         self.date.text = today
-  
         
+        self.dateLabelView.bounds = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 60)
+        self.dateLabelView.tintColor = UIColor.lightGray
+
         //date.text = realm?.objects(Item.self).value(forKey: "\(item.item_selectedDate)") as! String?
         //self.item = (realm?.object(ofType: Item.self, forPrimaryKey: item.item_id))!
+        
+//        let cell = self.tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell") as! DetailShoppingListTableViewCell
+//        
+
     }
     
+    func textFieldShouldReturn(numOfItemInput : UITextField) -> Bool
+    {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell") as! DetailShoppingListTableViewCell
+        cell.numOfItemInput.resignFirstResponder()
+        
+        return true
+    }
+    
+
     func getCurrentDate() -> String
     {
         let currentDate = NSDate()
@@ -79,6 +95,8 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell", for: indexPath) as! DetailShoppingListTableViewCell
         
+        
+        
         let string = itemList.items[indexPath.row].item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
         
         cell.productName.text = string
@@ -95,6 +113,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         if let url = NSURL(string:(itemList.items[indexPath.row].item_image!)){
             cell.productImage.af_setImage(withURL: url as URL)
         }
+       // cell.numOfItemInput.delegate = self
         
         return cell
         

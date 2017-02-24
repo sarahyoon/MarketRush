@@ -27,6 +27,9 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var productPrice: UILabel!
     
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
+    
     var priceForOne: Int = 0
     var number = 0
     var price = 0
@@ -47,8 +50,6 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         self.numOfItemInput.text = "\(number)"
         self.productPrice.text = "\(price)"
-        
-        
         
         self.delegate?.detailShoppingListTableViewCellDidChangeNumber(cell: self)
     }
@@ -75,7 +76,7 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.delegate?.detailShoppingListTableViewCellDidChangeNumber(cell: self)
     }
     
-
+    
     
     
     override func awakeFromNib() {
@@ -85,7 +86,13 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.productImage.layer.borderWidth = 0.6
         self.productImage.layer.borderColor = UIColor.lightGray.cgColor
         
+        self.plusButton.layer.cornerRadius = 4.0
+        self.plusButton.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
+        self.plusButton.tintColor = UIColor.white
         
+        self.minusButton.layer.cornerRadius = 4.0
+        self.minusButton.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
+        self.minusButton.tintColor = UIColor.white
         
         
     }

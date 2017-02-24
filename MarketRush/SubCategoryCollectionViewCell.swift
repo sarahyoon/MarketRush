@@ -12,6 +12,7 @@ class SubCategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var subCategoryImage: UIImageView!
     @IBOutlet weak var subCategoryImageName: UILabel!
+    @IBOutlet weak var cartButton: UIButton!
     
     //오늘의 상품 데이터주소 불러와 담기
     var item: Item? = nil{
@@ -39,4 +40,6 @@ class SubCategoryCollectionViewCell: UICollectionViewCell {
         }
         
     }
+
 }
+

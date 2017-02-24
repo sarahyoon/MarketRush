@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
 class SubCategoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var cartButton: UIButton!
     var selectedCategory: String!
     
     //section
     var meatSection = ["돼지고기","소고기","닭고기"]
     var drinkSection = ["생수/탄산수", "커피","차"]
     var dairySection = ["우유/두유", "치즈", "요구르트"]
-
+    
+    var item: Item!
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -55,6 +58,13 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         case Constants.DAIRY:
             
             return callProductApi(query: "치즈", start: 1, display: 20)
+            
+        case Constants.DRINK:
+            return callProductApi(query: "커피", start: 1, display: 20)
+            
+        case Constants.FRUIT:
+            return callProductApi(query: "과일", start: 1, display: 20)
+        
         default:
             return callProductApi(query: "소고기", start: 1, display: 20)
         }
@@ -131,6 +141,8 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoryCell", for: indexPath) as! SubCategoryCollectionViewCell
+        
+        cell.cartButton.addTarget(self,action: #selector(itemToCart(_:)),for: .touchUpInside)
         cell.item = DataController.sharedInstance().items?[indexPath.row]
         
         return cell
@@ -149,36 +161,62 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
     }
     
 
+    @IBAction func itemToCart(_ sender: Any) {
+        
+        let indexPath = collectionView?.indexPath(for: (((sender as AnyObject).superview??.superview) as! SubCategoryCollectionViewCell))
+        
+        let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: "SubCategoryCell", for: indexPath!) as! SubCategoryCollectionViewCell
+        
+        cell.item = DataController.sharedInstance().items?[(indexPath?.row)!]
     
-    // MARK: UICollectionViewDelegate
+        if (ifIdExists(findId: (cell.item?.item_id)!) == nil){
+            
+            print("new item")
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
+        ListofItems().saveItem(item_title: (cell.item?.item_title!)!, item_image: (cell.item?.item_image!)!, item_mallName: (cell.item?.item_mallName!)!, item_price: (cell.item?.item_price!)!, item_amount: (cell.item?.item_amount)!, item_id: (cell.item?.item_id!)!)
+        
+        let string = cell.item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+        
+        let alertController: UIAlertController = UIAlertController(title: string, message: "선택한 상품이 장바구니에 담겼습니다!!", preferredStyle: .alert)
+        
+        let action_cancel = UIAlertAction.init(title: "확인", style: .cancel)
+        {   (UIAlertAction) -> Void in
+        
+        }
+        
+        alertController.addAction(action_cancel)
+        present(alertController, animated: true, completion: nil)
+                    
+        }
+            
+        else{
+            print("already exists")
+            
+            let alertController: UIAlertController = UIAlertController(title: "", message: "이미 선택하신 제품입니다.", preferredStyle: .alert)
+            let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style:.cancel){
+                            (UIAlertAction) -> Void in }
+            
+            alertController.addAction(action_cancel)
+            present(alertController, animated: true, completion: nil)
+            }
+        
+        }
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+//    product ID 확인
+    func ifIdExists(findId: String) -> Item?{
+        
+        let predicate = NSPredicate(format: "item_id = %@", findId)
+        let realm = try? Realm()
+        let object = realm?.objects(Item.self).filter(predicate).first
+        if object?.item_id == findId {
+            
+            return object
+            
+        }
+        return nil
     }
-    */
 
 }
+
+
