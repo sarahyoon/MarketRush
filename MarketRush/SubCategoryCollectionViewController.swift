@@ -33,23 +33,18 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         return cellSize
     }
     
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
-        
-        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
-        
-        
-        //셀렉티드 카테고리별로 쿼리 다르게 날리기!
+
+        print(selectedCategory)
         
         switch selectedCategory {
             
         case Constants.VEGE:
             
-            return callProductApi(query: "샐러드", start: 2, display: 20)
+            return callProductApi(query: "채소+농산", start: 1, display: 20)
             
         case Constants.BREAD:
             
@@ -60,20 +55,41 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             return callProductApi(query: "치즈", start: 1, display: 20)
             
         case Constants.DRINK:
-            return callProductApi(query: "커피", start: 1, display: 20)
+            return callProductApi(query: "커피+녹차+홍차+차류", start: 1, display: 20)
             
         case Constants.FRUIT:
-            return callProductApi(query: "과일", start: 1, display: 20)
-        
+            return callProductApi(query: "산지직송+과일", start: 1, display: 20)
+            
+        case Constants.MEAT:
+            return callProductApi(query: "산지직송+축산", start: 1, display: 20)
+            
+        case Constants.NOODLES:
+            return callProductApi(query: "면류+쌀", start: 1, display: 20)
+            
         default:
-            return callProductApi(query: "소고기", start: 1, display: 20)
+            return callProductApi(query: "견과류", start: 1, display: 20)
         }
+        
+
+    }
+    
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
+        
+        //셀렉티드 카테고리별로 쿼리 다르게 날리기!
+
 
         
     }
     
     //remove observer
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
         NotificationCenter.default.removeObserver(self, name: DidReceiveProductInfo, object: nil)
     }
     
@@ -121,20 +137,8 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
 //    
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch selectedCategory {
-            
-        case Constants.MEAT:
-            return meatSection.count
-            
-        case Constants.DRINK:
-            return drinkSection.count
-            
-        case Constants.DAIRY:
-            return dairySection.count
-            
-        default:
-            return (DataController.sharedInstance().items?.count)!
-        }
+        
+        return 20
 
     }
 
@@ -174,19 +178,34 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             print("new item")
 
         ListofItems().saveItem(item_title: (cell.item?.item_title!)!, item_image: (cell.item?.item_image!)!, item_mallName: (cell.item?.item_mallName!)!, item_price: (cell.item?.item_price!)!, item_amount: (cell.item?.item_amount)!, item_id: (cell.item?.item_id!)!)
+            
+            let string = cell.item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
         
-        let string = cell.item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
-        
-        let alertController: UIAlertController = UIAlertController(title: string, message: "선택한 상품이 장바구니에 담겼습니다!!", preferredStyle: .alert)
-        
-        let action_cancel = UIAlertAction.init(title: "확인", style: .cancel)
-        {   (UIAlertAction) -> Void in
-        
-        }
-        
-        alertController.addAction(action_cancel)
-        present(alertController, animated: true, completion: nil)
-                    
+            let alertController = UIAlertController(title: "상품이 장바구니에 담겼습니다.", message: string, preferredStyle: UIAlertControllerStyle.alert)
+            
+            // Background color.
+            let backView = alertController.view.subviews.last?.subviews.last
+            backView?.layer.cornerRadius = 10.0
+            
+            // Change Title With Color and Font:
+            let myTitle  = "상품이 장바구니에 담겼습니다."
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: myTitle as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 16.0)!])
+            alertController.setValue(myMutableString, forKey: "attributedTitle")
+            
+            // Change Message With Color and Font
+            let message  = string
+            var messageMutableString = NSMutableAttributedString()
+            messageMutableString = NSMutableAttributedString(string: message! as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!])
+            messageMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0), range: NSRange(location:0,length:(message?.characters.count)!))
+
+            alertController.setValue(messageMutableString, forKey: "attributedMessage")
+            
+            // Action.
+            let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true, completion: nil)
+            
         }
             
         else{

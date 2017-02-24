@@ -8,10 +8,18 @@
 
 import UIKit
 
+
 class DetailImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productimage: UIImageView!
     
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        
+
+    }
 
 }

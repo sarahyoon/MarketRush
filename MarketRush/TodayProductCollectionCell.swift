@@ -36,4 +36,6 @@ class TodayProductCollectionCell: UICollectionViewCell {
         }
     }
 
+    
 }
+

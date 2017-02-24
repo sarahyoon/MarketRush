@@ -25,7 +25,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.view.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.4)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,16 +77,32 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             ListofItems().saveItem(item_title: item.item_title!, item_image: item.item_image!, item_mallName: item.item_mallName!, item_price: item.item_price!, item_amount: item.item_amount, item_id: item.item_id!)
             
-            let alertController: UIAlertController = UIAlertController(title: "", message: "선택한 상품이 장바구니에 담겼습니다!!", preferredStyle: .alert)
+            let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
             
-            let action_cancel = UIAlertAction.init(title: "확인", style: .cancel)
-            {   (UIAlertAction) -> Void in
-                
-                self.saveItemtoListButton.titleLabel?.textColor = UIColor(red: 55, green: 142, blue: 109, alpha: 0.3)
-            }
+            let alertController = UIAlertController(title: "상품이 장바구니에 담겼습니다.", message: string, preferredStyle: UIAlertControllerStyle.alert)
             
-            alertController.addAction(action_cancel)
-            present(alertController, animated: true, completion: nil)
+            // Background color.
+            let backView = alertController.view.subviews.last?.subviews.last
+            backView?.layer.cornerRadius = 10.0
+            
+            // Change Title With Color and Font:
+            let myTitle  = "상품이 장바구니에 담겼습니다."
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: myTitle as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 16.0)!])
+            alertController.setValue(myMutableString, forKey: "attributedTitle")
+            
+            // Change Message With Color and Font
+            let message  = string
+            var messageMutableString = NSMutableAttributedString()
+            messageMutableString = NSMutableAttributedString(string: message! as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!])
+            messageMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0), range: NSRange(location:0,length:(message?.characters.count)!))
+            
+            alertController.setValue(messageMutableString, forKey: "attributedMessage")
+            
+            // Action.
+            let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true, completion: nil)
             
         }
             
@@ -104,13 +120,29 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
 
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        
+//        
+//    
+//    }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10.0
-        
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 5.0
+//        
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     if indexPath.section == 0
+     {
+        return 400.0
+        }
+     if indexPath.section == 1
+     {
+        return 200.0
+        }
+     else{
+        return 45.0
+        }
     }
     
     //product ID 확인

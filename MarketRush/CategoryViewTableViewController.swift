@@ -12,7 +12,7 @@ import AlamofireObjectMapper
 import ObjectMapper
 import RealmSwift
 
-class CategoryViewTableViewController: UITableViewController, UISearchResultsUpdating {
+class CategoryViewTableViewController: UITableViewController {
 
     
     @IBOutlet var homeTableView: UITableView!
@@ -33,7 +33,7 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
    
     //for search controller managing database
     //var searchItems = DataController.sharedInstance().items
-    var resultSearchController = UISearchController()
+//    var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,20 +47,20 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
         //오늘의 상품 api 호출 (식품)
-        callProductApi(query: "식료품", start: 1, display: 20)
+        callProductApi(query: "신선식품+산지직송", start: 1, display: 20)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
         //search controller
-        self.resultSearchController = UISearchController(searchResultsController: nil)
-        self.resultSearchController.searchResultsUpdater = self
-        
-        self.resultSearchController.dimsBackgroundDuringPresentation = false
-        self.resultSearchController.searchBar.sizeToFit()
-        
-        self.tableView.tableHeaderView = self.resultSearchController.searchBar
-        self.tableView.reloadData()
+//        self.resultSearchController = UISearchController(searchResultsController: nil)
+//        self.resultSearchController.searchResultsUpdater = self
+//        
+//        self.resultSearchController.dimsBackgroundDuringPresentation = false
+//        self.resultSearchController.searchBar.sizeToFit()
+//        
+//        self.tableView.tableHeaderView = self.resultSearchController.searchBar
+//        self.tableView.reloadData()
 
     }
 
@@ -73,7 +73,7 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
         NotificationCenter.default.removeObserver(self, name: DidReceiveProductInfo, object: nil)
     }
     
-    //
+    
     func didReceiveProductInfo(noti: Notification) {
         self.tableView.reloadSections(IndexSet([0]), with: UITableViewRowAnimation.automatic)
     }
@@ -83,12 +83,8 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if (self.resultSearchController.isActive == true){
-            return 1
-        }
-        else{
+   
         return sections.count
-        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -99,7 +95,7 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.sectionHeaderHeight))
-        headerView.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 0.5)
+        headerView.backgroundColor = UIColor(red: 171/255, green: 216/255, blue: 167/255, alpha: 1.0)
         
         let label = UILabel(frame: CGRect(x: 5, y: 5, width: 100, height: 20))
         label.text = sections[section]
@@ -123,16 +119,7 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //section별 row 갯수
         
-        print(self.resultSearchController.isActive)
-        
-        if (self.resultSearchController.isActive == true)
-        {
-            
-            return (DataController.sharedInstance().items?.count)!
-        }
-        else{
- 
-            switch section
+        switch section
             {
             case 0:
                 
@@ -151,19 +138,11 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
                 return 1
             }
 
-        }
-
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        
-        
-        if self.resultSearchController.isActive{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-            cell.textLabel?.text = DataController.sharedInstance().items?[indexPath.row].item_title
-            return cell
-        }
-        else{
+    //오늘의 상품
       if indexPath.section == 0
             
         {
@@ -195,21 +174,20 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
             return cell
             
         }
-        }
-   }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-       DataController.sharedInstance().items?.removeAll(keepingCapacity: false)
-        
-        let searchText = searchController.searchBar.text!
-        callProductApi(query: searchText, start: 1, display: 10)
-        self.tableView.reloadData()
-        
     }
+    
+//    func updateSearchResults(for searchController: UISearchController) {
+//       DataController.sharedInstance().items?.removeAll(keepingCapacity: false)
+//        
+//        let searchText = searchController.searchBar.text!
+//        callProductApi(query: searchText, start: 1, display: 10)
+//        self.tableView.reloadData()
+//        
+//    }
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
     {
         let cell  = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
-        cell.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
+        cell.backgroundColor = UIColor(red: 219/255, green: 236/255, blue: 144/255, alpha: 1.0)
         cell.categoryTitle.textColor = UIColor.white
     }
     
@@ -226,6 +204,7 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
         if indexPath.section == 0
         {
             return 170
+            
         }
             
         else{
@@ -255,8 +234,7 @@ class CategoryViewTableViewController: UITableViewController, UISearchResultsUpd
                 let product = todayProductImageCell.item
                 detailProductView.item = product
 
-                
-                
+
             }
         }
     }
