@@ -10,11 +10,10 @@
 2. Add items in cart
 3. Manage and view added shopping items.
 
-----
 ## Demo Video 
-![Alt text](https://i.ytimg.com/vi/EiKkoTb3JsM/1.jpg?time=1488137830842)(https://www.youtube.com/watch?v=EiKkoTb3JsM)
 
-[Youtube Link](https://www.youtube.com/watch?v=EiKkoTb3JsM) 
+[![demo video](http://imgur.com/WzQvCMd)](https://youtu.be/EiKkoTb3JsM)
+
 
 ----
 ## Next Step
