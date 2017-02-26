@@ -19,7 +19,7 @@
 ## Built With
 * Realm DB: Storing User's Shopping List
 * Alamofire: HTTP Response, JSON Parameter Encoding from NAVER Search API
-* Alamofire-Object-Mappe: Convert Mapping JSON to objects
+* Alamofire-Object-Mapper: Convert Mapping JSON to objects
 * MVC/Singleton Pattern
 
 ## Demo Video 
