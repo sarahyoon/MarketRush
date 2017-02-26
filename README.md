@@ -12,7 +12,7 @@
 
 ## Demo Video 
 
-[![demo video](http://imgur.com/WzQvCMd)](https://youtu.be/EiKkoTb3JsM)
+[![Alt text for your video](http://imgur.com/WzQvCMd)](https://youtu.be/EiKkoTb3JsM)
 
 
 ----
