@@ -3,7 +3,7 @@
 ---
 ## Introduction
 > Market Rush is a simple online market application including product search using Naver API and add/view shopping items.
-![screenshot](./image/IMG_0800.PNG)
+![screenshot](./image/IMG_0800.PNG)![screenshot](./image/IMG_0801.PNG)
 ----
 ## Key Features
 1. Search Products with simple category
