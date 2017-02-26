@@ -12,8 +12,7 @@
 
 ----
 ## Demo Video 
-
-[![Alt text for your video](https://i.ytimg.com/vi/EiKkoTb3JsM/1.jpg?time=1488137830842)](http://https://www.youtube.com/watch?v=EiKkoTb3JsM)
+![Alt text](https://i.ytimg.com/vi/EiKkoTb3JsM/1.jpg?time=1488137830842)(https://www.youtube.com/watch?v=EiKkoTb3JsM)
 
 [Youtube Link](https://www.youtube.com/watch?v=EiKkoTb3JsM) 
 
