@@ -11,10 +11,7 @@
 3. Manage and view added shopping items.
 
 ## Demo Video 
-
-[![Alt text for your video](http://imgur.com/WzQvCMd)](https://youtu.be/EiKkoTb3JsM)
-
-
+[![Alt text for your video](http://i67.tinypic.com/2j4qywz.png)](https://youtu.be/EiKkoTb3JsM)
 ----
 ## Next Step
 * Improve Search Tool based on User Experience 
