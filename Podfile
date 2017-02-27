@@ -10,5 +10,7 @@ pod 'Alamofire', '~> 4.3'
 pod 'AlamofireObjectMapper', '~> 4.0'
 pod 'AlamofireImage', '~> 3.1'
 pod ‘RealmSwift’
+pod "MIBadgeButton-Swift", :git => 'https://github.com/mustafaibrahim989/MIBadgeButton-Swift.git', :branch => 'master'
+
 
 end

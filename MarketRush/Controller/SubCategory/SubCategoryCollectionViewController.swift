@@ -8,12 +8,16 @@
 
 import UIKit
 import RealmSwift
+import MIBadgeButton_Swift
 
 private let reuseIdentifier = "Cell"
 
 class SubCategoryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var cartButton: UIButton!
+    @IBOutlet weak var cartBadge: MIBadgeButton!
+    
+    
     var selectedCategory: String!
     
     //section
@@ -22,6 +26,8 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
     var dairySection = ["우유/두유", "치즈", "요구르트"]
     
     var item: Item!
+    let realm = try? Realm()
+    var itemList = ListofItems()
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -32,9 +38,12 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         
         return cellSize
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        updateTotalItem()
+        self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
 
@@ -77,7 +86,8 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.itemList.items = realm?.objects(Item.self)
+
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         
         //셀렉티드 카테고리별로 쿼리 다르게 날리기!
@@ -97,8 +107,14 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         self.collectionView?.reloadData()
     }
 
-    
-    
+    func updateTotalItem()
+    {
+        let myitem = self.itemList.items
+        cartBadge.badgeString = (myitem?.count)?.description
+        print("cartBagde: \(cartBadge.badgeString)")
+        cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
+        
+    }
 
 
     // MARK: - Navigation
@@ -203,6 +219,8 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             
             // Action.
             let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: nil)
+            updateTotalItem()
+            self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)
             

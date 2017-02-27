@@ -11,11 +11,14 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 import RealmSwift
+import MIBadgeButton_Swift
 
 class CategoryViewTableViewController: UITableViewController {
 
     
     @IBOutlet var homeTableView: UITableView!
+    @IBOutlet weak var cartBadge: MIBadgeButton!
+    
     
     //Section
     var sections = ["오늘의 상품", "신선식품", "가공식품"]
@@ -29,14 +32,24 @@ class CategoryViewTableViewController: UITableViewController {
     
     var item: Item?
     var itemList = ListofItems()
+    let realm = try? Realm()
     
    
     //for search controller managing database
     //var searchItems = DataController.sharedInstance().items
 //    var resultSearchController = UISearchController()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTotalItem()
+        self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.itemList.items = realm?.objects(Item.self)
         
         categoryTitle = [[],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
         
@@ -61,9 +74,24 @@ class CategoryViewTableViewController: UITableViewController {
 //        
 //        self.tableView.tableHeaderView = self.resultSearchController.searchBar
 //        self.tableView.reloadData()
+        
+        //badge Counter
+        
+        
+        
+        
 
     }
 
+    func updateTotalItem()
+    {
+        let myitem = self.itemList.items
+        cartBadge.badgeString = (myitem?.count)?.description
+        print("cartBagde: \(cartBadge.badgeString)")
+        cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
+        
+    }
+    
     
     
     //remove observer
@@ -75,6 +103,7 @@ class CategoryViewTableViewController: UITableViewController {
     
     
     func didReceiveProductInfo(noti: Notification) {
+        
         self.tableView.reloadSections(IndexSet([0]), with: UITableViewRowAnimation.automatic)
     }
     

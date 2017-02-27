@@ -10,6 +10,9 @@
 		2ED0406F2C1A92E358CC9132 /* Pods_MarketRush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */; };
 		E81F04281E5AD30A006E9AED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81F04271E5AD30A006E9AED /* Main.storyboard */; };
 		E8BB834F1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BB834E1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift */; };
+		E8C40E171E63F1E0004E55E0 /* namul.png in Resources */ = {isa = PBXBuildFile; fileRef = E8C40E161E63F1E0004E55E0 /* namul.png */; };
+		E8C40E191E63F1EC004E55E0 /* rice.png in Resources */ = {isa = PBXBuildFile; fileRef = E8C40E181E63F1EC004E55E0 /* rice.png */; };
+		E8C40E1B1E63F1FC004E55E0 /* noodles.png in Resources */ = {isa = PBXBuildFile; fileRef = E8C40E1A1E63F1FC004E55E0 /* noodles.png */; };
 		E8EE4FC51E540678007E3667 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE4FC41E540678007E3667 /* AppDelegate.swift */; };
 		E8EE4FCC1E540678007E3667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8EE4FCB1E540678007E3667 /* Assets.xcassets */; };
 		E8EE4FCF1E540678007E3667 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EE4FCD1E540678007E3667 /* LaunchScreen.storyboard */; };
@@ -27,11 +30,8 @@
 		E8FBE1E91E63481A00418D82 /* fruits150.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1D81E63481A00418D82 /* fruits150.png */; };
 		E8FBE1EA1E63481A00418D82 /* juice.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1D91E63481A00418D82 /* juice.png */; };
 		E8FBE1EB1E63481A00418D82 /* meat150.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1DA1E63481A00418D82 /* meat150.png */; };
-		E8FBE1EC1E63481A00418D82 /* namul.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1DB1E63481A00418D82 /* namul.png */; };
-		E8FBE1ED1E63481A00418D82 /* noodles.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1DC1E63481A00418D82 /* noodles.png */; };
 		E8FBE1EE1E63481A00418D82 /* nuts150.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1DD1E63481A00418D82 /* nuts150.png */; };
 		E8FBE1EF1E63481A00418D82 /* oil150.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1DE1E63481A00418D82 /* oil150.png */; };
-		E8FBE1F01E63481A00418D82 /* rice.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1DF1E63481A00418D82 /* rice.png */; };
 		E8FBE1F11E63481A00418D82 /* rice150.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1E01E63481A00418D82 /* rice150.png */; };
 		E8FBE1F21E63481A00418D82 /* shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1E11E63481A00418D82 /* shopping-cart.png */; };
 		E8FBE1F31E63481A00418D82 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBE1E21E63481A00418D82 /* strawberry.png */; };
@@ -59,6 +59,9 @@
 		AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.release.xcconfig"; sourceTree = "<group>"; };
 		E81F04271E5AD30A006E9AED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E8BB834E1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController 05-17-16-786.swift"; sourceTree = "<group>"; };
+		E8C40E161E63F1E0004E55E0 /* namul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = namul.png; sourceTree = "<group>"; };
+		E8C40E181E63F1EC004E55E0 /* rice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice.png; sourceTree = "<group>"; };
+		E8C40E1A1E63F1FC004E55E0 /* noodles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noodles.png; sourceTree = "<group>"; };
 		E8EE4FC11E540678007E3667 /* MarketRush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketRush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4FC41E540678007E3667 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8EE4FCB1E540678007E3667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,11 +81,8 @@
 		E8FBE1D81E63481A00418D82 /* fruits150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fruits150.png; sourceTree = "<group>"; };
 		E8FBE1D91E63481A00418D82 /* juice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = juice.png; sourceTree = "<group>"; };
 		E8FBE1DA1E63481A00418D82 /* meat150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meat150.png; sourceTree = "<group>"; };
-		E8FBE1DB1E63481A00418D82 /* namul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = namul.png; sourceTree = "<group>"; };
-		E8FBE1DC1E63481A00418D82 /* noodles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noodles.png; sourceTree = "<group>"; };
 		E8FBE1DD1E63481A00418D82 /* nuts150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nuts150.png; sourceTree = "<group>"; };
 		E8FBE1DE1E63481A00418D82 /* oil150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil150.png; sourceTree = "<group>"; };
-		E8FBE1DF1E63481A00418D82 /* rice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice.png; sourceTree = "<group>"; };
 		E8FBE1E01E63481A00418D82 /* rice150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice150.png; sourceTree = "<group>"; };
 		E8FBE1E11E63481A00418D82 /* shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopping-cart.png"; sourceTree = "<group>"; };
 		E8FBE1E21E63481A00418D82 /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
@@ -208,11 +208,11 @@
 				E8FBE1D81E63481A00418D82 /* fruits150.png */,
 				E8FBE1D91E63481A00418D82 /* juice.png */,
 				E8FBE1DA1E63481A00418D82 /* meat150.png */,
-				E8FBE1DB1E63481A00418D82 /* namul.png */,
-				E8FBE1DC1E63481A00418D82 /* noodles.png */,
+				E8C40E161E63F1E0004E55E0 /* namul.png */,
+				E8C40E1A1E63F1FC004E55E0 /* noodles.png */,
 				E8FBE1DD1E63481A00418D82 /* nuts150.png */,
+				E8C40E181E63F1EC004E55E0 /* rice.png */,
 				E8FBE1DE1E63481A00418D82 /* oil150.png */,
-				E8FBE1DF1E63481A00418D82 /* rice.png */,
 				E8FBE1E01E63481A00418D82 /* rice150.png */,
 				E8FBE1E11E63481A00418D82 /* shopping-cart.png */,
 				E8FBE1E21E63481A00418D82 /* strawberry.png */,
@@ -383,20 +383,20 @@
 				E8FBE1E91E63481A00418D82 /* fruits150.png in Resources */,
 				E8FBE1F11E63481A00418D82 /* rice150.png in Resources */,
 				E8FBE1EA1E63481A00418D82 /* juice.png in Resources */,
+				E8C40E1B1E63F1FC004E55E0 /* noodles.png in Resources */,
+				E8C40E191E63F1EC004E55E0 /* rice.png in Resources */,
 				E8FBE1F41E63481A00418D82 /* vege150.png in Resources */,
 				E8FBE1EE1E63481A00418D82 /* nuts150.png in Resources */,
 				E8FBE1E51E63481A00418D82 /* cereal150.png in Resources */,
+				E8C40E171E63F1E0004E55E0 /* namul.png in Resources */,
 				E8FBE1F31E63481A00418D82 /* strawberry.png in Resources */,
 				E8FBE1E41E63481A00418D82 /* bread150.png in Resources */,
-				E8FBE1EC1E63481A00418D82 /* namul.png in Resources */,
 				E8EE4FCF1E540678007E3667 /* LaunchScreen.storyboard in Resources */,
 				E8FBE1E71E63481A00418D82 /* dairy150.png in Resources */,
 				E8FBE1EF1E63481A00418D82 /* oil150.png in Resources */,
 				E8EE4FCC1E540678007E3667 /* Assets.xcassets in Resources */,
 				E8FBE1F21E63481A00418D82 /* shopping-cart.png in Resources */,
-				E8FBE1ED1E63481A00418D82 /* noodles.png in Resources */,
 				E81F04281E5AD30A006E9AED /* Main.storyboard in Resources */,
-				E8FBE1F01E63481A00418D82 /* rice.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +593,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6GK85R4835;
 				INFOPLIST_FILE = MarketRush/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Boostcamp.MarketRush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -607,6 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6GK85R4835;
 				INFOPLIST_FILE = MarketRush/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Boostcamp.MarketRush;
 				PRODUCT_NAME = "$(TARGET_NAME)";

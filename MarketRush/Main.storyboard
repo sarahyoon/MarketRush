@@ -473,7 +473,18 @@
                             <outlet property="delegate" destination="wAe-Ha-Bng" id="DCq-bY-UkB"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="MarketRush" id="lPL-A4-RCD"/>
+                    <navigationItem key="navigationItem" title="MarketRush" id="lPL-A4-RCD">
+                        <barButtonItem key="rightBarButtonItem" image="cartBadge" style="plain" id="ryx-M6-TWq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MTj-n4-RGq" customClass="MIBadgeButton" customModule="MIBadgeButton_Swift">
+                                <rect key="frame" x="273" y="6" width="86" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cartBadge"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cartBadge" destination="MTj-n4-RGq" id="6um-wT-KTJ"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVG-NV-kzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -654,9 +665,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MarketRush" id="nYp-im-9eP"/>
+                    <navigationItem key="navigationItem" title="MarketRush" id="nYp-im-9eP">
+                        <barButtonItem key="rightBarButtonItem" image="cartBadge" style="plain" id="aDX-q2-C2h">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sMu-Xg-rdj" customClass="MIBadgeButton" customModule="MIBadgeButton_Swift">
+                                <rect key="frame" x="327" y="6" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cartBadge"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cartBadge" destination="sMu-Xg-rdj" id="huq-Ch-Wzh"/>
                         <outlet property="saveItemtoListButton" destination="yZ0-J6-AnS" id="Tn6-u0-EIq"/>
                     </connections>
                 </viewController>
@@ -788,14 +808,23 @@
                             <outlet property="delegate" destination="tGQ-sU-RsH" id="M7L-5E-iP2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MarketRush" id="8Vc-OB-CRX"/>
+                    <navigationItem key="navigationItem" title="MarketRush" id="8Vc-OB-CRX">
+                        <barButtonItem key="rightBarButtonItem" image="cartBadge" style="plain" id="oUe-b0-HoS">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FbP-SL-2hC" userLabel="cartBadge" customClass="MIBadgeButton" customModule="MIBadgeButton_Swift">
+                                <rect key="frame" x="327" y="6" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cartBadge"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="cartBadge" destination="FbP-SL-2hC" id="vhx-Cc-Xw3"/>
                         <outlet property="homeTableView" destination="bGo-jQ-O0Z" id="LH3-nQ-IAG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0YO-Tl-hVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936.79999999999995" y="-294.60269865067471"/>
+            <point key="canvasLocation" x="937" y="-294"/>
         </scene>
         <!--홈-->
         <scene sceneID="X1w-Jw-V9L">
@@ -818,7 +847,7 @@
         <scene sceneID="z9D-UY-RQ8">
             <objects>
                 <collectionViewController id="eIF-4z-xXi" userLabel="FruitSubCategoryViewController" customClass="FruitSubCategoryCollectionViewController" customModule="MarketRush" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="eUZ-aB-2FF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="eUZ-aB-2FF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1090,6 +1119,7 @@
     </scenes>
     <resources>
         <image name="cart25" width="25" height="25"/>
+        <image name="cartBadge" width="24" height="24"/>
         <image name="cartButton50" width="50" height="50"/>
         <image name="home25" width="25" height="25"/>
         <image name="shopping-cart.png" width="32" height="32"/>

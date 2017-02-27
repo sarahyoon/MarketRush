@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MIBadgeButton-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>16D80957AFC97965A929E00C1F8EC747</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>34E1BEE5B9151B6FF42B51C88D1AF746</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF56B81EDE51F997E4C6EDB889DC7524</key>
+		<key>A4C9E1FAB970D2BBDDADA234B733CCC2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3DB16BDBFD7123118966F16D73A2909</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F3CDB14BF9D4C9941D2E3C7293067E19</key>
+		<key>C0B57201F36E736F99E2BF8F98436E4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

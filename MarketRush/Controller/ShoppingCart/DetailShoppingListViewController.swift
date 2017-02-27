@@ -25,6 +25,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     @IBOutlet weak var totalSumLabel: UILabel!
     @IBOutlet weak var subTotalPrice: UILabel!
     
+    
    // @IBOutlet weak var saveButton: UIButton!
     
     let realm = try? Realm()
@@ -52,6 +53,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        self.itemList.items = realm?.objects(Item.self)
         let today = getCurrentDate()
         self.date.text = today
         
@@ -158,6 +160,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         self.tableView.reloadData()
     }
     
+    //쇼핑리스트에 등록된 총 아이템 갯수
     func updateTotalItem()
     {
         let myitem = self.itemList.items

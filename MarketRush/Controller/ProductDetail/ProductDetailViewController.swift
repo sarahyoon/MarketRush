@@ -9,24 +9,37 @@
 import UIKit
 import RealmSwift
 import Realm
+import MIBadgeButton_Swift
 
 class ProductDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     var item: Item!
         //var items: Results<Item>!
+    var itemList = ListofItems()
+    let realm = try? Realm()
     
     var list = ["상품이름", "가격", "쇼핑몰이름"]
     var section = ["1", "2"]
 
     //button outlet
     @IBOutlet weak var saveItemtoListButton: UIButton!
+    @IBOutlet weak var cartBadge: MIBadgeButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTotalItem()
+        self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.itemList.items = realm?.objects(Item.self)
         self.view.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.4)
+
     }
+    
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return section.count
@@ -101,6 +114,8 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             // Action.
             let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: nil)
+            updateTotalItem()
+            self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)
             
@@ -114,11 +129,21 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             let alertController: UIAlertController = UIAlertController(title: "", message: "이미 선택하신 제품입니다.", preferredStyle: .alert)
             let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style:.cancel){
                 (UIAlertAction) -> Void in }
-            
+            updateTotalItem()
+            self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
             alertController.addAction(action_cancel)
             present(alertController, animated: true, completion: nil)
         }
 
+    }
+    
+    func updateTotalItem()
+    {
+        let myitem = self.itemList.items
+        cartBadge.badgeString = (myitem?.count)?.description
+        print("cartBagde: \(cartBadge.badgeString)")
+        cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
+        
     }
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        
