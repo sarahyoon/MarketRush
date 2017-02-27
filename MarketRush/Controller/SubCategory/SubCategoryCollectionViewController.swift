@@ -53,24 +53,24 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             
         case Constants.VEGE:
             
-            return callProductApi(query: "채소+농산", start: 1, display: 20)
+            return callProductApi(query: "산지직송+채소", start: 1, display: 20)
             
         case Constants.BREAD:
             
-            return callProductApi(query: "식빵", start: 3, display: 20)
+            return callProductApi(query: "빵", start: 3, display: 20)
             
         case Constants.DAIRY:
             
-            return callProductApi(query: "치즈", start: 1, display: 20)
+            return callProductApi(query: "치즈+우유", start: 1, display: 20)
             
         case Constants.DRINK:
             return callProductApi(query: "커피+녹차+홍차+차류", start: 1, display: 20)
             
         case Constants.FRUIT:
-            return callProductApi(query: "산지직송+과일", start: 1, display: 20)
+            return callProductApi(query: "과일+산지직송", start: 1, display: 20)
             
         case Constants.MEAT:
-            return callProductApi(query: "산지직송+축산", start: 1, display: 20)
+            return callProductApi(query: "축산+산지직송", start: 1, display: 20)
             
         case Constants.NOODLES:
             return callProductApi(query: "면류+쌀", start: 1, display: 20)
