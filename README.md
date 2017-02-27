@@ -6,8 +6,8 @@
 
 ---
 ## Screenshots
-<img src= "./image/IMG_0800.PNG", width = "250">    <img src= "./image/IMG_0801.PNG", width = "250">    <img src= "./image/IMG_0802.PNG", width = "250">
-<img src= "./image/IMG_0804.PNG", width = "250">    <img src= "./image/IMG_0805.PNG", width = "250">    <img src= "./image/IMG_0803.PNG", width = "250">
+<img src= "./image/1.png", width = "250">    <img src= "./image/2.png", width = "250">    <img src= "./image/3.png", width = "250">
+<img src= "./image/4.png", width = "250">    <img src= "./image/5.png", width = "250">    <img src= "./image/6.png", width = "250">
 
 ----
 ## Key Features
