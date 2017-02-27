@@ -6,8 +6,8 @@
 
 ---
 ## Screenshots
-<img src= "./image/IMG_0800.PNG", width = "250">    <img src= "./image/IMG_0801.PNG", width = "250">    <img src= "./image/IMG_0802.PNG", width = "250">
-<img src= "./image/IMG_0804.PNG", width = "250">    <img src= "./image/IMG_0805.PNG", width = "250">    <img src= "./image/IMG_0803.PNG", width = "250">
+<img src= "./image/1.PNG", width = "250">    <img src= "./image/2.PNG", width = "250">    <img src= "./image/3.PNG", width = "250">
+<img src= "./image/4.PNG", width = "250">    <img src= "./image/5.PNG", width = "250">    <img src= "./image/6.PNG", width = "250">
 
 ----
 ## Key Features
@@ -20,10 +20,11 @@
 * Realm DB: Storing User's Shopping List
 * Alamofire: HTTP Response, JSON Parameter Encoding from NAVER Search API
 * Alamofire-Object-Mapper: Convert Mapping JSON to objects
+* MIBadgeButton: Notification Badge Counter for counting number of added items
 * MVC/Singleton Pattern
 
 ## Demo Video 
-[![Alt text for your video](http://i67.tinypic.com/2j4qywz.png)](https://youtu.be/EiKkoTb3JsM)
+[![Alt text for your video](http://i64.tinypic.com/34qn1px.png)](https://youtu.be/EgD8irb_57Y)
 ----
 ## Next Step
 * Improve Search Tool based on User Experience 
