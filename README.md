@@ -20,6 +20,7 @@
 * Realm DB: Storing User's Shopping List
 * Alamofire: HTTP Response, JSON Parameter Encoding from NAVER Search API
 * Alamofire-Object-Mapper: Convert Mapping JSON to objects
+* MIBadgeButton: Notification Badge Counter for counting number of added items
 * MVC/Singleton Pattern
 
 ## Demo Video 
