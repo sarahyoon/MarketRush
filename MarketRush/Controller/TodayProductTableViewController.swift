@@ -13,7 +13,7 @@ import Realm
 class TodayProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var lists = Array<TodayProduct>()
+    var lists = Array<Item>()
     //var item = [Item]()
     //    var items: Results<Item>!
     
@@ -35,7 +35,7 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
         self.view.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.4)
         
         //딸기
-        var todayItem = TodayProduct()
+        var todayItem = Item()
         todayItem.item_id = "1"
         todayItem.item_image = "strawberry.png"
         todayItem.item_title = "친환경 하우스 딸기(설향)"
@@ -47,7 +47,7 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
         
         
         //봄나물
-        todayItem = TodayProduct()
+        todayItem = Item()
         todayItem.item_id = "2"
         todayItem.item_image = "namul.png"
         todayItem.item_title = "[백년대계] 닭가슴살"
@@ -58,7 +58,7 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
         self.lists.append(todayItem)
         
         //닭가슴살
-        todayItem = TodayProduct()
+        todayItem = Item()
         todayItem.item_id = "3"
         todayItem.item_image = "chicken.png"
         todayItem.item_title = "친환경 봄나물 4종"
@@ -69,7 +69,7 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
         self.lists.append(todayItem)
         
         //주스
-        todayItem = TodayProduct()
+        todayItem = Item()
         todayItem.item_id = "4"
         todayItem.item_image = "juice.png"
         todayItem.item_title = "콜드프레스 주스 6종"
@@ -80,7 +80,7 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
         self.lists.append(todayItem)
         
         //면
-        todayItem = TodayProduct()
+        todayItem = Item()
         todayItem.item_id = "5"
         todayItem.item_image = "noodles.png"
         todayItem.item_title = "[마에스트리] 아티장 파스타 7종"
@@ -91,7 +91,7 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
         self.lists.append(todayItem)
         
         //
-        todayItem = TodayProduct()
+        todayItem = Item()
         todayItem.item_id = "6"
         todayItem.item_image = "rice.png"
         todayItem.item_title = "게르마늄 쌀 2종"
@@ -114,18 +114,14 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let row = self.lists[indexPath.row]
-       view.tag = indexPath.row
+        print("indexpath\(lists[indexPath.row].item_image)")
         
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailImageCell") as! DetailImageTableViewCell
             
-            cell.productimage.image = UIImage(named: row.item_image!)
-//            if let url = NSURL(string:item.item_image!){
-//                cell.productimage.af_setImage(withURL: url as URL)
-//            }
+            cell.productimage.image = UIImage(named: lists[indexPath.row].item_image!)
+            view.tag = indexPath.row
  
             return cell
         }
@@ -135,16 +131,17 @@ class TodayProductTableViewController: UIViewController, UITableViewDelegate, UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailDescriptionCell") as! DetailDescriptionTableViewCell
 //            
 //            let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
-            cell.productName.text = row.item_title
+            cell.productName.text = lists[indexPath.row].item_title
             
             cell.price.text = "가격"
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = NumberFormatter.Style.decimal
-            let priceInt = Int(row.item_price!)
+            let priceInt = Int(lists[indexPath.row].item_price!)
             cell.productPrice.text = numberFormatter.string(from: NSNumber(value: priceInt!))
             
             cell.mallName.text = "쇼핑몰"
-            cell.productMall.text = row.item_mallName
+            cell.productMall.text = lists[indexPath.row].item_mallName
+            view.tag = indexPath.row
             
             return cell
             

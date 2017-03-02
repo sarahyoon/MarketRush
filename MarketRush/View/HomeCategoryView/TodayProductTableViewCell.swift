@@ -22,7 +22,6 @@ class TodayProductTableViewCell: UITableViewCell {
 }
 
  //collectionview extension
-// 오늘의 상품 테이블 뷰셀에 수평방향 콜렉션 뷰 담기
 
 extension TodayProductTableViewCell: UICollectionViewDataSource{
     
@@ -35,7 +34,7 @@ extension TodayProductTableViewCell: UICollectionViewDataSource{
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayProductCell", for: indexPath) as! TodayProductCollectionCell
-        //cell.item = DataController.sharedInstance().items?[indexPath.row]
+       // cell.item = DataController.sharedInstance().items?[indexPath.row]
         cell.todayProductName.text = todayTitle[indexPath.row]
         cell.todayProductImage.image = UIImage(named: todayImage[indexPath.row])
         

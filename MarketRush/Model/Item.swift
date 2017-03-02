@@ -25,8 +25,6 @@ class Item: Object, Mappable{
     //number of item, default as 1
     dynamic var item_amount: Int = 1
     
-    
-    
 
     //Implement of Mappable protocol
     required convenience init?(map: Map)
@@ -60,7 +58,7 @@ class Item: Object, Mappable{
 }
 
 
-//api 호출
+//api call
 func callProductApi(query:String, start:NSNumber, display:NSNumber)
 {
     let shoppingURL = "https://openapi.naver.com/v1/search/shop.json"

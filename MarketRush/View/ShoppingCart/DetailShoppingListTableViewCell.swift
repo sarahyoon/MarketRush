@@ -30,22 +30,20 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
+    //product price
     var priceForOne: Int = 0
+    //number of item
     var number = 0
+    //calculated price
     var price = 0
-    
 
     
     @IBAction func clickPlusButton(sender: UIButton) {
 
         if let num = Int(self.numOfItemInput.text!) {
             number = num + 1
-            
+
             price = priceForOne * number
-            
-//            price = Int(productPrice.text!)!
-//            price = number*price
-            
         }
         
         self.numOfItemInput.text = "\(number)"
@@ -55,15 +53,11 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     @IBAction func clickMinusButton(sender: UIButton) {
-//        var number = 0
-//        var price = 0
-        
+
         if let num = Int(self.numOfItemInput.text!) {
             number = num - 1
             
             price = priceForOne * number
-            
-
         }
         
         if number < 1 {
@@ -81,11 +75,11 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.productImage.layer.borderWidth = 0.6
         self.productImage.layer.borderColor = UIColor.lightGray.cgColor
         
+        /* button style */
         self.plusButton.layer.cornerRadius = 4.0
         self.plusButton.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
         self.plusButton.tintColor = UIColor.white
@@ -93,7 +87,6 @@ class DetailShoppingListTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.minusButton.layer.cornerRadius = 4.0
         self.minusButton.backgroundColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
         self.minusButton.tintColor = UIColor.white
-        
         
     }
     

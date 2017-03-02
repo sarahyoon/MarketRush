@@ -10,23 +10,19 @@ import UIKit
 import RealmSwift
 import Realm
 
-//현재 장바구니에 담은 상품 리스트
 class DetailShoppingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DetailShoppingListTableViewCellDelegate, UITextFieldDelegate{
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabelView: UIView!
     
-    //1뷰
+    //view 1
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var itemNumber: UILabel!
     
-    //2뷰
+    //view 2
     @IBOutlet weak var totalSumLabel: UILabel!
     @IBOutlet weak var subTotalPrice: UILabel!
-    
-    
-   // @IBOutlet weak var saveButton: UIButton!
     
     let realm = try? Realm()
     
@@ -38,14 +34,15 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         self.itemList.items = realm?.objects(Item.self)
 
+        //number of items in cart
         updateTotalItem()
+        
         self.subTotalPrice.text = decimalFormat(num: "\(subTotal())")
         
-        self.tableView.reloadData()
-        
-    NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
     }
     
@@ -60,23 +57,9 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         self.dateLabelView.bounds = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 60)
         self.dateLabelView.tintColor = UIColor.lightGray
 
-        //date.text = realm?.objects(Item.self).value(forKey: "\(item.item_selectedDate)") as! String?
-        //self.item = (realm?.object(ofType: Item.self, forPrimaryKey: item.item_id))!
-        
-//        let cell = self.tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell") as! DetailShoppingListTableViewCell
-//        
-
     }
     
-    func textFieldShouldReturn(numOfItemInput : UITextField) -> Bool
-    {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell") as! DetailShoppingListTableViewCell
-        cell.numOfItemInput.resignFirstResponder()
-        
-        return true
-    }
     
-
     func getCurrentDate() -> String
     {
         let currentDate = NSDate()
@@ -88,8 +71,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(itemList.items.count)
-        
+
         return itemList.items.count
     }
     
@@ -97,17 +79,13 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailShoppingListCell", for: indexPath) as! DetailShoppingListTableViewCell
         
-        
-        
+        //string tag remove
         let string = itemList.items[indexPath.row].item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
         
         cell.productName.text = string
-       
-        //단품가격 저장
         cell.priceForOne = Int(itemList.items[indexPath.row].item_price!)!
         
-        
-       cell.productPrice.text = decimalFormat(num: itemList.items[indexPath.row].item_price!)
+        cell.productPrice.text = decimalFormat(num: itemList.items[indexPath.row].item_price!)
         cell.delegate = self
         
         cell.numOfItemInput.text = "\(itemList.items[indexPath.row].item_amount)"
@@ -115,12 +93,11 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         if let url = NSURL(string:(itemList.items[indexPath.row].item_image!)){
             cell.productImage.af_setImage(withURL: url as URL)
         }
-       // cell.numOfItemInput.delegate = self
         
         return cell
         
     }
-    
+    //number format for price
     func decimalFormat (num:String)->String{
         let numberFormmater = NumberFormatter()
         numberFormmater.numberStyle = NumberFormatter.Style.decimal
@@ -128,12 +105,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         
         return numberFormmater.string(from: NSNumber(value:priceInt!))!
     }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if (editingStyle == .delete){
@@ -160,13 +132,14 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         self.tableView.reloadData()
     }
     
-    //쇼핑리스트에 등록된 총 아이템 갯수
+    //calculate total number of item
     func updateTotalItem()
     {
         let myitem = self.itemList.items
         self.itemNumber.text = (myitem?.count)?.description
     }
     
+    //calculate total item price
     func subTotal()-> Int
     {
         let sumArray:[String] = realm!.objects(Item.self).sorted(byKeyPath: "item_price").value(forKeyPath: "item_price") as! Array<String>
@@ -174,7 +147,6 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         let sum = sumArrayofInt.reduce(0,+)
         
         return sum
-        
     }
     
 

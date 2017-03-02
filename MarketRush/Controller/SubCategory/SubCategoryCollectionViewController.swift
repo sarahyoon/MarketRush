@@ -20,47 +20,29 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
     
     var selectedCategory: String!
     
-    //section
-    var meatSection = ["돼지고기","소고기","닭고기"]
-    var drinkSection = ["생수/탄산수", "커피","차"]
-    var dairySection = ["우유/두유", "치즈", "요구르트"]
-    
     var item: Item!
     let realm = try? Realm()
     var itemList = ListofItems()
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let cellSpace: CGFloat = 10.0 * 3 // 셀 사이 간격 3개
-        
-        let cellWidth = (collectionView.bounds.size.width - cellSpace) / 2.0
-        let cellSize = CGSize(width: cellWidth, height: cellWidth + 40)
-        
-        return cellSize
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Number of total items in cart
         updateTotalItem()
         self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
 
-        print(selectedCategory)
-        
+        //Send different query by selected category
         switch selectedCategory {
             
         case Constants.VEGE:
-            
             return callProductApi(query: "산지직송+채소", start: 1, display: 20)
             
         case Constants.BREAD:
-            
             return callProductApi(query: "빵", start: 3, display: 20)
             
         case Constants.DAIRY:
-            
             return callProductApi(query: "치즈+우유", start: 1, display: 20)
             
         case Constants.DRINK:
@@ -82,21 +64,15 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
 
     }
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.itemList.items = realm?.objects(Item.self)
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         
-        //셀렉티드 카테고리별로 쿼리 다르게 날리기!
-
-
-        
     }
     
-    //remove observer
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -113,15 +89,14 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         cartBadge.badgeString = (myitem?.count)?.description
         print("cartBagde: \(cartBadge.badgeString)")
         cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
-        
     }
 
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   
+        
+        //goto Product Detail View Controller from selected items
         if (segue.identifier == "gotoDetailViewFromSub"){
             if let subCategoryImageCell = sender as? SubCategoryCollectionViewCell, let detailProductView = segue.destination as? ProductDetailViewController{
                 let product = subCategoryImageCell.item
@@ -132,25 +107,6 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
 
 
     // MARK: UICollectionViewDataSource
-
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        switch selectedCategory {
-//            
-//        case Constants.MEAT:
-//            return meatSection.count
-//            
-//        case Constants.DRINK:
-//            return drinkSection.count
-//            
-//        case Constants.DAIRY:
-//            return dairySection.count
-//            
-//        default:
-//            return (vegeProduct?.count)!
-//        }
-//
-//    }
-//    
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -168,8 +124,19 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellSpace: CGFloat = 10.0 * 3 // 셀 사이 간격 3개
+        
+        let cellWidth = (collectionView.bounds.size.width - cellSpace) / 2.0
+        let cellSize = CGSize(width: cellWidth, height: cellWidth + 40)
+        
+        return cellSize
+    }
     
+    //Sub Category Header view
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SubCategoryHeader", for: indexPath as IndexPath) as! SubCategoryHeaderCollectionReusableView
         
         header.subCategoryTitle.text = selectedCategory
@@ -180,18 +147,16 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         return header
     }
     
-
+    //put item in cart button
     @IBAction func itemToCart(_ sender: Any) {
         
         let indexPath = collectionView?.indexPath(for: (((sender as AnyObject).superview??.superview) as! SubCategoryCollectionViewCell))
         
         let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: "SubCategoryCell", for: indexPath!) as! SubCategoryCollectionViewCell
-        
         cell.item = DataController.sharedInstance().items?[(indexPath?.row)!]
     
+        //new item
         if (ifIdExists(findId: (cell.item?.item_id)!) == nil){
-            
-            print("new item")
 
         ListofItems().saveItem(item_title: (cell.item?.item_title!)!, item_image: (cell.item?.item_image!)!, item_mallName: (cell.item?.item_mallName!)!, item_price: (cell.item?.item_price!)!, item_amount: (cell.item?.item_amount)!, item_id: (cell.item?.item_id!)!)
             
@@ -226,8 +191,8 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             
         }
             
+        //items already in cart
         else{
-            print("already exists")
             
             let alertController: UIAlertController = UIAlertController(title: "", message: "이미 선택하신 제품입니다.", preferredStyle: .alert)
             let action_cancel = UIAlertAction.init(title: "계속 쇼핑하기", style:.cancel){
@@ -240,7 +205,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         }
 
     
-//    product ID 확인
+    //check product id
     func ifIdExists(findId: String) -> Item?{
         
         let predicate = NSPredicate(format: "item_id = %@", findId)
@@ -251,6 +216,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             return object
             
         }
+        
         return nil
     }
 

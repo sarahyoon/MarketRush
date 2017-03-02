@@ -15,7 +15,6 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
 
     
     var item: Item!
-        //var items: Results<Item>!
     var itemList = ListofItems()
     let realm = try? Realm()
     
@@ -26,8 +25,10 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var saveItemtoListButton: UIButton!
     @IBOutlet weak var cartBadge: MIBadgeButton!
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         updateTotalItem()
         self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
     }
@@ -36,33 +37,34 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.itemList.items = realm?.objects(Item.self)
         self.view.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.4)
-
     }
-    
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return section.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //4
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+    
+        //product view image
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailImageCell") as! DetailImageTableViewCell
+            cell.productimage.image = UIImage(named: item.item_image!)
+            
             if let url = NSURL(string:item.item_image!){
-                cell.productimage.af_setImage(withURL: url as URL)
+               cell.productimage.af_setImage(withURL: url as URL)
             }
+            
             return cell
         }
-        else{ // row == 1
+        
+        //product description
+        else{
             
-            //let row = self.list[indexPath.row] //2번째 row부터
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailDescriptionCell") as! DetailDescriptionTableViewCell
             
             let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
@@ -83,9 +85,8 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func saveItemToList(_ sender: Any) {
-        //알림창 3초후에 사라지기로 변경!
         
-        //장바구니에 새로 담은 제품일 경우
+        //new item
         if ((ifIdExists(findId: item.item_id!)) == nil){
             
             ListofItems().saveItem(item_title: item.item_title!, item_image: item.item_image!, item_mallName: item.item_mallName!, item_price: item.item_price!, item_amount: item.item_amount, item_id: item.item_id!)
@@ -121,7 +122,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
         }
             
-            //이미 장바구니에 담은 제품일 경우
+        //item in cart
         else{
             
             saveItemtoListButton.titleLabel?.textColor = UIColor(red: 55, green: 142, blue: 109, alpha: 0.3)
@@ -145,17 +146,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
         
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        
-//        
-//    
-//    }
 
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 5.0
-//        
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      if indexPath.section == 0
      {
@@ -170,7 +161,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    //product ID 확인
+    //check product id
     func ifIdExists(findId: String) -> Item?{
         
         let predicate = NSPredicate(format: "item_id = %@", findId)

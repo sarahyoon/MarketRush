@@ -24,9 +24,7 @@ class CategoryViewTableViewController: UITableViewController {
     var sections = ["오늘의 상품", "신선식품", "가공식품"]
     var categoryList = [["최신상품"],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
     
-    //카테고리별 제목 배열
     var categoryTitle:[[String]]!
-    //카테고리별 이미지 배열
     var categoryImage:[[String]]!
     
     
@@ -34,14 +32,13 @@ class CategoryViewTableViewController: UITableViewController {
     var itemList = ListofItems()
     let realm = try? Realm()
     
-   
-    //for search controller managing database
-    //var searchItems = DataController.sharedInstance().items
-//    var resultSearchController = UISearchController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //number of items in cart
         updateTotalItem()
+        
         self.navigationItem.rightBarButtonItem?.didChangeValue(forKey: cartBadge.badgeString!)
         
     }
@@ -51,53 +48,24 @@ class CategoryViewTableViewController: UITableViewController {
         
         self.itemList.items = realm?.objects(Item.self)
         
+        //Category Images and Titles
         categoryTitle = [[],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
-        
         categoryImage = [[],["vege150.png","fruits150.png","cereal150.png","meat150.png","bread150.png","drink150.png"],["dairy150.png","nuts150.png","rice150.png","oil150.png"]]
         
         
-        //add observer for product api calls
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
-        //오늘의 상품 api 호출 (식품)
+        //Send query for today's product
         callProductApi(query: "신선식품+산지직송", start: 1, display: 20)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
-        
-        //search controller
-//        self.resultSearchController = UISearchController(searchResultsController: nil)
-//        self.resultSearchController.searchResultsUpdater = self
-//        
-//        self.resultSearchController.dimsBackgroundDuringPresentation = false
-//        self.resultSearchController.searchBar.sizeToFit()
-//        
-//        self.tableView.tableHeaderView = self.resultSearchController.searchBar
-//        self.tableView.reloadData()
-        
-        //badge Counter
-        
-        
-        
-        
 
     }
 
-    func updateTotalItem()
-    {
-        let myitem = self.itemList.items
-        cartBadge.badgeString = (myitem?.count)?.description
-        print("cartBagde: \(cartBadge.badgeString)")
-        cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
-        
-    }
-    
-    
-    
-    //remove observer
+   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         NotificationCenter.default.removeObserver(self, name: DidReceiveProductInfo, object: nil)
     }
     
@@ -107,8 +75,15 @@ class CategoryViewTableViewController: UITableViewController {
         self.tableView.reloadSections(IndexSet([0]), with: UITableViewRowAnimation.automatic)
     }
     
-
-
+    //Count number of total item from cart
+    func updateTotalItem()
+    {
+        let myitem = self.itemList.items
+        cartBadge.badgeString = (myitem?.count)?.description
+        print("cartBagde: \(cartBadge.badgeString)")
+        cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -120,12 +95,14 @@ class CategoryViewTableViewController: UITableViewController {
         return sections[section]
     }
     
-    //섹션 헤더 색상/폰트 바꾸기
+    //change color & font from section header
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        //header background color
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.sectionHeaderHeight))
         headerView.backgroundColor = UIColor(red: 171/255, green: 216/255, blue: 167/255, alpha: 1.0)
         
+        //header label
         let label = UILabel(frame: CGRect(x: 5, y: 5, width: 100, height: 20))
         label.text = sections[section]
         label.textColor = UIColor.white
@@ -135,7 +112,9 @@ class CategoryViewTableViewController: UITableViewController {
     
     }
     
+    //footer background color
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+       
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 15))
         footerView.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.8)
         return footerView
@@ -145,9 +124,9 @@ class CategoryViewTableViewController: UITableViewController {
         return 15.0
         
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //section별 row 갯수
-        
+
         switch section
             {
             case 0:
@@ -171,7 +150,7 @@ class CategoryViewTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    //오늘의 상품
+        //Today's product section
       if indexPath.section == 0
             
         {
@@ -205,14 +184,6 @@ class CategoryViewTableViewController: UITableViewController {
         }
     }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//       DataController.sharedInstance().items?.removeAll(keepingCapacity: false)
-//        
-//        let searchText = searchController.searchBar.text!
-//        callProductApi(query: searchText, start: 1, display: 10)
-//        self.tableView.reloadData()
-//        
-//    }
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath)
     {
         let cell  = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
@@ -227,7 +198,6 @@ class CategoryViewTableViewController: UITableViewController {
     }
     
 
-    //tablecell별 높이 설정
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0
@@ -247,7 +217,7 @@ class CategoryViewTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //해당카테고리로 이동하면서 관련 타이틀 갖고가기
+        //SubCategory Collection View Controller segue
         if(segue.identifier == "gotoSubCategory")
         {
             if let destination = segue.destination as? SubCategoryCollectionViewController{
@@ -258,6 +228,7 @@ class CategoryViewTableViewController: UITableViewController {
         
         }
         
+        //Product Detail View Controller segue
         if (segue.identifier == "gotoDetailfromToday"){
             if let todayProductImageCell = sender as? TodayProductCollectionCell, let detailProductView = segue.destination as? ProductDetailViewController{
                 let product = todayProductImageCell.item
@@ -269,9 +240,3 @@ class CategoryViewTableViewController: UITableViewController {
     }
 
 }
-
-//extension CategoryViewTableViewController: UISearchResultsUpdating{
-//    func updateSearchResults(for searchController: UISearchController) {
-//        filterContentForSearchText(searchText: searchController.searchBar.text!)
-//    }
-//}

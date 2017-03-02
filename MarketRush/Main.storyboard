@@ -28,69 +28,6 @@
             </objects>
             <point key="canvasLocation" x="-730" y="90"/>
         </scene>
-        <!--History Shopping List Table View Controller-->
-        <scene sceneID="JG4-cF-crw">
-            <objects>
-                <tableViewController storyboardIdentifier="HistoryShoppingListTableViewController" id="36b-Zc-FfQ" userLabel="History Shopping List Table View Controller" customClass="HistoryShoppingListTableViewController" customModule="MarketRush" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="F05-sz-V9g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dbs-QO-ikL">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ShoppingList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSz-B8-H1h">
-                                    <rect key="frame" x="132" y="4" width="110" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HistoryShoppingListTableViewCell" textLabel="NIT-IZ-bnT" detailTextLabel="qLZ-gF-GOK" rowHeight="55" style="IBUITableViewCellStyleValue1" id="QHY-sJ-8Zj" customClass="HistoryShoppingListTableViewCell" customModule="MarketRush" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="375" height="55"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QHY-sJ-8Zj" id="6f3-le-b0m">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="54"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NIT-IZ-bnT">
-                                            <rect key="frame" x="15" y="17" width="36" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qLZ-gF-GOK">
-                                            <rect key="frame" x="296" y="17" width="44" height="21"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="listSavedDate" destination="NIT-IZ-bnT" id="fsm-n3-guk"/>
-                                    <outlet property="numOfItems" destination="qLZ-gF-GOK" id="rdb-nK-gfC"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="36b-Zc-FfQ" id="i5d-kn-dqI"/>
-                            <outlet property="delegate" destination="36b-Zc-FfQ" id="saF-hP-Bkp"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="MarketRush" id="c18-DN-GPW"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w6d-Uo-2a9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1889" y="403"/>
-        </scene>
         <!--Detail Shopping List View Controller-->
         <scene sceneID="ehu-y1-rkq">
             <objects>
@@ -221,7 +158,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hwa-ck-Fdh" id="rJp-2U-JDM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psz-QQ-eHd">
@@ -387,7 +324,7 @@
         <scene sceneID="ZgB-5w-kBj">
             <objects>
                 <collectionViewController id="wAe-Ha-Bng" userLabel="SubCategoryViewController" customClass="SubCategoryCollectionViewController" customModule="MarketRush" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="zwS-wi-TEI">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zwS-wi-TEI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -488,7 +425,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVG-NV-kzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="-279"/>
+            <point key="canvasLocation" x="1860" y="-279"/>
         </scene>
         <!--Product Detail View Controller-->
         <scene sceneID="fW6-oU-5v1">
@@ -523,7 +460,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="udc-kK-uBg" id="Tg6-Vr-yD6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DWi-WA-3bX">
@@ -545,7 +482,7 @@
                                         <rect key="frame" x="0.0" y="316" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wcQ-vm-tbE" id="CXA-T7-cck">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QIB-zn-jjn">
@@ -682,7 +619,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYb-Er-BGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2946" y="-279"/>
+            <point key="canvasLocation" x="2713" y="-279"/>
         </scene>
         <!--장바구니-->
         <scene sceneID="kAk-9z-XO9">
@@ -714,10 +651,10 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59t-LH-KNH" id="fP7-8r-Mza">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l8j-C5-GnX">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l8j-C5-GnX">
                                             <rect key="frame" x="5" y="0.0" width="370" height="173.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -728,8 +665,8 @@
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayProductCell" id="Pky-4b-b7p" customClass="TodayProductCollectionCell" customModule="MarketRush" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="11" width="141" height="151"/>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="TodayProductCell" id="Pky-4b-b7p" customClass="TodayProductCollectionCell" customModule="MarketRush" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="11.5" width="141" height="151"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="141" height="151"/>
@@ -761,7 +698,7 @@
                                                     <connections>
                                                         <outlet property="todayProductImage" destination="GWL-Nb-frW" id="sbp-ZP-d4n"/>
                                                         <outlet property="todayProductName" destination="L1G-j2-tM3" id="5bI-yW-Y2T"/>
-                                                        <segue destination="9mm-lp-lb8" kind="show" identifier="gotoDetailfromToday" id="HYE-pl-26v"/>
+                                                        <segue destination="C5E-lm-Zkf" kind="show" identifier="gotoDetailfromToday" id="gLy-7O-Ehr"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -780,7 +717,7 @@
                                 <rect key="frame" x="0.0" y="202" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WVd-ee-h1S" id="3EV-ny-9VX">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYm-4F-ppJ" userLabel="Category Title">
@@ -843,94 +780,6 @@
             </objects>
             <point key="canvasLocation" x="135" y="-293"/>
         </scene>
-        <!--FruitSubCategoryViewController-->
-        <scene sceneID="z9D-UY-RQ8">
-            <objects>
-                <collectionViewController id="eIF-4z-xXi" userLabel="FruitSubCategoryViewController" customClass="FruitSubCategoryCollectionViewController" customModule="MarketRush" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="eUZ-aB-2FF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uM4-rp-DLD">
-                            <size key="itemSize" width="164" height="199"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubCategoryCell" id="Vpe-99-W0i" customClass="SubCategoryCollectionViewCell" customModule="MarketRush" customModuleProvider="target">
-                                <rect key="frame" x="10" y="50" width="164" height="199"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="164" height="199"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="guN-YP-irH">
-                                            <rect key="frame" x="0.0" y="0.0" width="164" height="165"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lv6-Jg-fb5">
-                                            <rect key="frame" x="0.0" y="164" width="164" height="35"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="5Vz-ec-AAJ"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbM-dp-rYT" userLabel="cartButton">
-                                            <rect key="frame" x="114" y="115" width="50" height="50"/>
-                                            <state key="normal" image="cartButton50"/>
-                                            <connections>
-                                                <action selector="itemToCart:" destination="eIF-4z-xXi" eventType="touchUpInside" id="Cuk-vq-fNJ"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="guN-YP-irH" secondAttribute="bottom" constant="26" id="J2C-lD-ufl"/>
-                                    <constraint firstItem="KbM-dp-rYT" firstAttribute="bottom" secondItem="guN-YP-irH" secondAttribute="bottom" id="ZDf-Kc-sfR"/>
-                                    <constraint firstItem="guN-YP-irH" firstAttribute="top" secondItem="Vpe-99-W0i" secondAttribute="top" id="ZWb-Td-jjh"/>
-                                    <constraint firstItem="lv6-Jg-fb5" firstAttribute="trailing" secondItem="guN-YP-irH" secondAttribute="trailing" id="a3l-i7-5M9"/>
-                                    <constraint firstItem="lv6-Jg-fb5" firstAttribute="leading" secondItem="guN-YP-irH" secondAttribute="leading" id="dnq-zO-rcM"/>
-                                    <constraint firstItem="guN-YP-irH" firstAttribute="leading" secondItem="Vpe-99-W0i" secondAttribute="leading" id="gcZ-GC-5hU"/>
-                                    <constraint firstItem="KbM-dp-rYT" firstAttribute="trailing" secondItem="lv6-Jg-fb5" secondAttribute="trailing" id="ie2-EZ-e1D"/>
-                                    <constraint firstAttribute="trailing" secondItem="guN-YP-irH" secondAttribute="trailing" id="kJO-Bf-9Qc"/>
-                                    <constraint firstAttribute="bottom" secondItem="lv6-Jg-fb5" secondAttribute="bottom" id="rRf-8M-Bhv"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="cartButton" destination="KbM-dp-rYT" id="wUx-LG-QQe"/>
-                                    <outlet property="subCategoryImage" destination="guN-YP-irH" id="cV1-bT-d4k"/>
-                                    <outlet property="subCategoryImageName" destination="lv6-Jg-fb5" id="kkR-93-wCg"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubCategoryHeader" id="LSf-FA-teL" customClass="SubCategoryHeaderCollectionReusableView" customModule="MarketRush" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viF-v8-1cX">
-                                    <rect key="frame" x="166" y="15" width="42" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="viF-v8-1cX" firstAttribute="centerY" secondItem="LSf-FA-teL" secondAttribute="centerY" id="6m6-uz-X6z"/>
-                                <constraint firstItem="viF-v8-1cX" firstAttribute="centerX" secondItem="LSf-FA-teL" secondAttribute="centerX" id="kty-i4-okA"/>
-                            </constraints>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="eIF-4z-xXi" id="4tk-eD-IB9"/>
-                            <outlet property="delegate" destination="eIF-4z-xXi" id="qcd-Np-XMl"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="MarketRush" id="NhE-L1-qbd"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G5F-l5-qTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1889" y="-1039"/>
-        </scene>
         <!--Today Product Detail View Controller-->
         <scene sceneID="JiH-I6-37b">
             <objects>
@@ -964,7 +813,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5a1-LA-Q1V" id="ErR-aE-pnT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Rh-VA-BTc">
@@ -986,7 +835,7 @@
                                         <rect key="frame" x="0.0" y="316" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ze1-Po-RUz" id="ofg-G3-7MU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fis-qI-2iq">
@@ -1114,7 +963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEF-LZ-yKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937" y="-998"/>
+            <point key="canvasLocation" x="937" y="-991"/>
         </scene>
     </scenes>
     <resources>
@@ -1124,7 +973,4 @@
         <image name="home25" width="25" height="25"/>
         <image name="shopping-cart.png" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="HYE-pl-26v"/>
-    </inferredMetricsTieBreakers>
 </document>
