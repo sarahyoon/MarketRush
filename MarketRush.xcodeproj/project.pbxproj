@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2ED0406F2C1A92E358CC9132 /* Pods_MarketRush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AB0E9FC981C5FE2E9BF028 /* Pods_MarketRush.framework */; };
 		E81F04281E5AD30A006E9AED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81F04271E5AD30A006E9AED /* Main.storyboard */; };
-		E8BB834F1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BB834E1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift */; };
 		E8C40E171E63F1E0004E55E0 /* namul.png in Resources */ = {isa = PBXBuildFile; fileRef = E8C40E161E63F1E0004E55E0 /* namul.png */; };
 		E8C40E191E63F1EC004E55E0 /* rice.png in Resources */ = {isa = PBXBuildFile; fileRef = E8C40E181E63F1EC004E55E0 /* rice.png */; };
 		E8C40E1B1E63F1FC004E55E0 /* noodles.png in Resources */ = {isa = PBXBuildFile; fileRef = E8C40E1A1E63F1FC004E55E0 /* noodles.png */; };
@@ -50,7 +49,6 @@
 		E8FBE2191E63486400418D82 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBE2121E63486400418D82 /* ProductDetailViewController.swift */; };
 		E8FBE21A1E63486400418D82 /* DetailShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBE2141E63486400418D82 /* DetailShoppingListViewController.swift */; };
 		E8FBE21B1E63486400418D82 /* SubCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBE2161E63486400418D82 /* SubCategoryCollectionViewController.swift */; };
-		E8FBE21C1E63486400418D82 /* TodayProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FBE2171E63486400418D82 /* TodayProductTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +56,6 @@
 		1915AC7D66431D364CD5AC24 /* Pods-MarketRush.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.debug.xcconfig"; sourceTree = "<group>"; };
 		AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketRush.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarketRush/Pods-MarketRush.release.xcconfig"; sourceTree = "<group>"; };
 		E81F04271E5AD30A006E9AED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E8BB834E1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController 05-17-16-786.swift"; sourceTree = "<group>"; };
 		E8C40E161E63F1E0004E55E0 /* namul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = namul.png; sourceTree = "<group>"; };
 		E8C40E181E63F1EC004E55E0 /* rice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice.png; sourceTree = "<group>"; };
 		E8C40E1A1E63F1FC004E55E0 /* noodles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noodles.png; sourceTree = "<group>"; };
@@ -101,7 +98,6 @@
 		E8FBE2121E63486400418D82 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E8FBE2141E63486400418D82 /* DetailShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailShoppingListViewController.swift; sourceTree = "<group>"; };
 		E8FBE2161E63486400418D82 /* SubCategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryCollectionViewController.swift; sourceTree = "<group>"; };
-		E8FBE2171E63486400418D82 /* TodayProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayProductTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +157,6 @@
 				E8FBE19D1E6346CB00418D82 /* Model */,
 				E8EE4FC41E540678007E3667 /* AppDelegate.swift */,
 				E81F04271E5AD30A006E9AED /* Main.storyboard */,
-				E8BB834E1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift */,
 				E8EE4FCB1E540678007E3667 /* Assets.xcassets */,
 				E8EE4FCD1E540678007E3667 /* LaunchScreen.storyboard */,
 				E8EE4FD01E540678007E3667 /* Info.plist */,
@@ -277,7 +272,6 @@
 				E8FBE2111E63486400418D82 /* ProductDetail */,
 				E8FBE2131E63486400418D82 /* ShoppingCart */,
 				E8FBE2151E63486400418D82 /* SubCategory */,
-				E8FBE2171E63486400418D82 /* TodayProductTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -460,7 +454,6 @@
 				E8FBE2061E63484F00418D82 /* TodayProductCollectionCell.swift in Sources */,
 				E8FBE20C1E63484F00418D82 /* SubCategoryHeaderCollectionReusableView.swift in Sources */,
 				E8FBE1A21E6346CB00418D82 /* Item.swift in Sources */,
-				E8BB834F1E60CCBA00DBDB8E /* ViewController 05-17-16-786.swift in Sources */,
 				E8FBE20A1E63484F00418D82 /* DetailShoppingListTableViewCell.swift in Sources */,
 				E8FBE20B1E63484F00418D82 /* SubCategoryCollectionViewCell.swift in Sources */,
 				E8FBE2091E63484F00418D82 /* DetailImageTableViewCell.swift in Sources */,
@@ -473,7 +466,6 @@
 				E8FBE21B1E63486400418D82 /* SubCategoryCollectionViewController.swift in Sources */,
 				E8FBE1A51E6346CB00418D82 /* TodayProduct.swift in Sources */,
 				E8FBE1A31E6346CB00418D82 /* ListofItems.swift in Sources */,
-				E8FBE21C1E63486400418D82 /* TodayProductTableViewController.swift in Sources */,
 				E8FBE2081E63484F00418D82 /* DetailDescriptionTableViewCell.swift in Sources */,
 				E8FBE2191E63486400418D82 /* ProductDetailViewController.swift in Sources */,
 				E8FBE2051E63484F00418D82 /* CategoryTableViewCell.swift in Sources */,
@@ -591,6 +583,7 @@
 			baseConfigurationReference = 1915AC7D66431D364CD5AC24 /* Pods-MarketRush.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6GK85R4835;
 				INFOPLIST_FILE = MarketRush/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -606,6 +599,7 @@
 			baseConfigurationReference = AAFE5E9FA89BD6C318B8EE2A /* Pods-MarketRush.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6GK85R4835;
 				INFOPLIST_FILE = MarketRush/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;

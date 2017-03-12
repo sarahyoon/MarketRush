@@ -30,6 +30,7 @@ class TodayProductCollectionCell: UICollectionViewCell {
             let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
             
             self.todayProductName.text = string
+            
         }
     }
 

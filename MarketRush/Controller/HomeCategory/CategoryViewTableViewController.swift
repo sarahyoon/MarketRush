@@ -22,7 +22,7 @@ class CategoryViewTableViewController: UITableViewController {
     
     //Section
     var sections = ["오늘의 상품", "신선식품", "가공식품"]
-    var categoryList = [["최신상품"],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
+    var categoryList = [[Constants.recent],[Constants.VEGE, Constants.FRUIT, Constants.CROPS, Constants.MEAT, Constants.BREAD, Constants.DRINK],[Constants.DAIRY, Constants.NUTS, Constants.NOODLES, Constants.OIL]]
     
     var categoryTitle:[[String]]!
     var categoryImage:[[String]]!
@@ -49,7 +49,7 @@ class CategoryViewTableViewController: UITableViewController {
         self.itemList.items = realm?.objects(Item.self)
         
         //Category Images and Titles
-        categoryTitle = [[],["야채", "과일", "곡류", "육류", "빵", "음료"],["유제품", "견과류", "면류/쌀", "소스류/오일류"]]
+        categoryTitle = [[],[Constants.VEGE, Constants.FRUIT, Constants.CROPS, Constants.MEAT, Constants.BREAD, Constants.DRINK],[Constants.DAIRY, Constants.NUTS, Constants.NOODLES, Constants.OIL]]
         categoryImage = [[],["vege150.png","fruits150.png","cereal150.png","meat150.png","bread150.png","drink150.png"],["dairy150.png","nuts150.png","rice150.png","oil150.png"]]
         
         
@@ -62,7 +62,6 @@ class CategoryViewTableViewController: UITableViewController {
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
 
     }
-
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -83,6 +82,7 @@ class CategoryViewTableViewController: UITableViewController {
         print("cartBagde: \(cartBadge.badgeString)")
         cartBadge.badgeEdgeInsets = UIEdgeInsetsMake(13, 5, 0, 0)
     }
+    
     
     // MARK: - Table view data source
 

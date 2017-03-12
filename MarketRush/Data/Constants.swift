@@ -22,4 +22,5 @@ class Constants{
     static let NUTS = "견과류"
     static let NOODLES = "면류/쌀"
     static let OIL = "소스류/오일류"
+    static let recent = "최신상품"
 }
