@@ -6,7 +6,7 @@
 
 ---
 ## Screenshots
-<img src = "./image/1.PNG", width = "250">
+<img src = "MarketRush/image/1.PNG", width = "250">
 
 ----
 ## Key Features
