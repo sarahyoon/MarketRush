@@ -6,8 +6,8 @@
 
 ---
 ## Screenshots
-<img src= "./image/1.PNG", width = "250">    <img src= "./image/2.PNG", width = "250">    <img src= "./image/3.PNG", width = "250">
-<img src= "./image/4.PNG", width = "250">    <img src= "./image/5.PNG", width = "250">    <img src= "./image/6.PNG", width = "250">
+<img src= "MarketRush/image/1.PNG", width = "250">    <img src= "MarketRush/image/2.PNG", width = "250">    <img src= "./image/3.PNG", width = "250">
+<img src= "MarketRush/image/4.PNG", width = "250">    <img src= "MarketRush/image/5.PNG", width = "250">    <img src= "MarketRush/image/6.PNG", width = "250">
 
 ----
 ## Key Features
