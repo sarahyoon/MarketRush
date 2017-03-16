@@ -1,5 +1,5 @@
 # MarketRush
-####Simple e-commerce market iOS Application
+#### Simple e-commerce market iOS Application
 ---
 ## Getting Started
 > Market Rush is a simple online market application including product search using Naver API and add/view shopping items.
