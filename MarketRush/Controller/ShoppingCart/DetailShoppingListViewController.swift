@@ -97,6 +97,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         return cell
         
     }
+    
     //number format for price
     func decimalFormat (num:String)->String{
         let numberFormmater = NumberFormatter()

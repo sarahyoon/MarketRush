@@ -24,9 +24,9 @@ class TodayProductCollectionCell: UICollectionViewCell {
                     (image) in
                     self.todayProductImage.image = image.result.value
                 })
-                
             }
             
+            //delete <> tag delete
             let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
             
             self.todayProductName.text = string

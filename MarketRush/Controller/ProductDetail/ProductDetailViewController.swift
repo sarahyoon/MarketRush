@@ -174,6 +174,4 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return nil
     }
-    
-
 }

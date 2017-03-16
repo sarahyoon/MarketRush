@@ -233,10 +233,7 @@ class CategoryViewTableViewController: UITableViewController {
             if let todayProductImageCell = sender as? TodayProductCollectionCell, let detailProductView = segue.destination as? ProductDetailViewController{
                 let product = todayProductImageCell.item
                 detailProductView.item = product
-
-
             }
         }
     }
-
 }

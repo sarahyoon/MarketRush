@@ -158,7 +158,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hwa-ck-Fdh" id="rJp-2U-JDM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psz-QQ-eHd">
@@ -460,7 +460,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="udc-kK-uBg" id="Tg6-Vr-yD6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DWi-WA-3bX">
@@ -482,7 +482,7 @@
                                         <rect key="frame" x="0.0" y="316" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wcQ-vm-tbE" id="CXA-T7-cck">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QIB-zn-jjn">
@@ -651,7 +651,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59t-LH-KNH" id="fP7-8r-Mza">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l8j-C5-GnX">
@@ -666,7 +666,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="TodayProductCell" id="Pky-4b-b7p" customClass="TodayProductCollectionCell" customModule="MarketRush" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="11" width="141" height="151"/>
+                                                    <rect key="frame" x="0.0" y="11.5" width="141" height="151"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="141" height="151"/>
@@ -717,7 +717,7 @@
                                 <rect key="frame" x="0.0" y="202" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WVd-ee-h1S" id="3EV-ny-9VX">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYm-4F-ppJ" userLabel="Category Title">
@@ -779,191 +779,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9y-qR-UFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135" y="-293"/>
-        </scene>
-        <!--Today Product Detail View Controller-->
-        <scene sceneID="JiH-I6-37b">
-            <objects>
-                <viewController id="C5E-lm-Zkf" userLabel="Today Product Detail View Controller" customClass="TodayProductTableViewController" customModule="MarketRush" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GxY-Q2-9i9"/>
-                        <viewControllerLayoutGuide type="bottom" id="3DH-Ev-J2Y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OVe-R6-tCk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="226" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pqe-9N-MK9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" id="8k5-es-yRy">
-                                    <rect key="frame" x="0.0" y="486" width="375" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="장바구니에 담기" image="shopping-cart.png">
-                                        <color key="titleColor" red="0.2156862745" green="0.5568627451" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="saveItemToList:" destination="C5E-lm-Zkf" eventType="touchUpInside" id="Ajl-gw-Ysj"/>
-                                    </connections>
-                                </button>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailImageCell" rowHeight="288" id="5a1-LA-Q1V" customClass="DetailImageTableViewCell" customModule="MarketRush" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="288"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5a1-LA-Q1V" id="ErR-aE-pnT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="287"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Rh-VA-BTc">
-                                                    <rect key="frame" x="0.0" y="20" width="375" height="248"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="4Rh-VA-BTc" firstAttribute="centerY" secondItem="ErR-aE-pnT" secondAttribute="centerY" id="3TN-Od-cGq"/>
-                                                <constraint firstItem="4Rh-VA-BTc" firstAttribute="top" secondItem="ErR-aE-pnT" secondAttribute="top" constant="20" id="GTG-s5-gTZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="4Rh-VA-BTc" secondAttribute="trailing" id="Ik2-x8-36z"/>
-                                                <constraint firstItem="4Rh-VA-BTc" firstAttribute="leading" secondItem="ErR-aE-pnT" secondAttribute="leading" id="Wji-pB-iB0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="productimage" destination="4Rh-VA-BTc" id="yDP-Qv-nhG"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailDescriptionCell" rowHeight="170" id="Ze1-Po-RUz" customClass="DetailDescriptionTableViewCell" customModule="MarketRush" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="316" width="375" height="170"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ze1-Po-RUz" id="ofg-G3-7MU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fis-qI-2iq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-3m-5kz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPz-pg-qPD">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="51"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="20" id="ZPl-pG-FfX"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="productName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZn-hr-IWf">
-                                                                    <rect key="frame" x="20" y="0.0" width="335" height="51"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="51" id="Wcd-lm-gKt"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgl-Cr-fDn">
-                                                                    <rect key="frame" x="355" y="0.0" width="20" height="51"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="20" id="FTL-xn-Wy3"/>
-                                                                    </constraints>
-                                                                </view>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGj-gR-2uJ">
-                                                            <rect key="frame" x="0.0" y="51" width="375" height="51"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGg-sz-rL5">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="51"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="20" id="wHn-OF-7w9"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="omU-fX-BTy">
-                                                                    <rect key="frame" x="20" y="0.0" width="100" height="51"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="dXC-zV-gec"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="productPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYP-QF-v5r">
-                                                                    <rect key="frame" x="120" y="0.0" width="255" height="51"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="51" id="e5h-JE-Qof"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEz-UM-JBH">
-                                                            <rect key="frame" x="0.0" y="102" width="375" height="50"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-7f-aLh">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="50"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="20" id="Dr0-3R-F55"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mallName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUC-PD-Vd9">
-                                                                    <rect key="frame" x="20" y="0.0" width="100" height="50"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="nRN-rJ-rvS"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="productMall" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxt-9g-KGi">
-                                                                    <rect key="frame" x="120" y="0.0" width="255" height="50"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="fxI-9X-Ekp"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Fis-qI-2iq" firstAttribute="top" secondItem="ofg-G3-7MU" secondAttribute="top" id="VRX-hq-5vy"/>
-                                                <constraint firstAttribute="trailing" secondItem="Fis-qI-2iq" secondAttribute="trailing" id="jRo-Lf-ywy"/>
-                                                <constraint firstItem="Fis-qI-2iq" firstAttribute="leading" secondItem="ofg-G3-7MU" secondAttribute="leading" id="o2j-ap-bwg"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="mallName" destination="kUC-PD-Vd9" id="yg3-S0-Lkm"/>
-                                            <outlet property="price" destination="omU-fX-BTy" id="JVG-1i-Gvf"/>
-                                            <outlet property="productMall" destination="Pxt-9g-KGi" id="kwf-5k-m8d"/>
-                                            <outlet property="productName" destination="wZn-hr-IWf" id="w8B-bw-2Um"/>
-                                            <outlet property="productPrice" destination="GYP-QF-v5r" id="jjo-rV-4za"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="C5E-lm-Zkf" id="2VK-cN-bRV"/>
-                                    <outlet property="delegate" destination="C5E-lm-Zkf" id="FfU-Dh-T2O"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="MarketRush" id="woI-tZ-SXj"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="saveItemtoListButton" destination="8k5-es-yRy" id="F3l-DU-7j2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QEF-LZ-yKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="937" y="-991"/>
         </scene>
     </scenes>
     <resources>

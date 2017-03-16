@@ -23,14 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 25.0)]
         navigationBarAppearance.isTranslucent = true
 
-
-
         //tabbar customize
-        
         let tabbarAppearance = UITabBar.appearance()
-
-//        tabbarAppearance.barTintColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 0.1)
         tabbarAppearance.tintColor = UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0)
+        
         
         return true
     }
