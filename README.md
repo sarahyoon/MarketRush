@@ -6,7 +6,9 @@
 
 ---
 ## Screenshots
-![screenshot](./image/1.PNG) ![screenshot](./image/2.PNG) ![screenshot](./image/3.PNG)
+![screenshot](./image/1.PNG) ![screenshot](./image/2.PNG) 
+![screenshot](./image/3.PNG) ![screenshot](./image/4.PNG)
+![screenshot](./image/5.PNG) ![screenshot](./image/6.PNG)
 ----
 ## Key Features
 1. Search Products with simple category
