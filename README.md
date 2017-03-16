@@ -6,8 +6,7 @@
 
 ---
 ## Screenshots
-<img src = "MarketRush/image/1.PNG", width = "250">
-
+![screenshot]("./image/1.PNG")
 ----
 ## Key Features
 1. Search Products with simple category
