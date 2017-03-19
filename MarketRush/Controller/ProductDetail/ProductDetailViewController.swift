@@ -87,7 +87,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func saveItemToList(_ sender: Any) {
         
         //new item
-        if ((ifIdExists(findId: item.item_id!)) == nil){
+        if ((ifIdExists(item.item_id!)) == nil){
             
             ListofItems().saveItem(item_title: item.item_title!, item_image: item.item_image!, item_mallName: item.item_mallName!, item_price: item.item_price!, item_amount: item.item_amount, item_id: item.item_id!)
             
@@ -162,7 +162,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //check product id
-    func ifIdExists(findId: String) -> Item?{
+    func ifIdExists(_ findId: String) -> Item?{
         
         let predicate = NSPredicate(format: "item_id = %@", findId)
         let realm = try? Realm()

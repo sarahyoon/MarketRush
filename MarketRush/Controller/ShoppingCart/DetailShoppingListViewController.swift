@@ -40,7 +40,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         //number of items in cart
         updateTotalItem()
         
-        self.subTotalPrice.text = decimalFormat(num: "\(subTotal())")
+        self.subTotalPrice.text = decimalFormat("\(subTotal())")
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
@@ -85,7 +85,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         cell.productName.text = string
         cell.priceForOne = Int(itemList.items[indexPath.row].item_price!)!
         
-        cell.productPrice.text = decimalFormat(num: itemList.items[indexPath.row].item_price!)
+        cell.productPrice.text = decimalFormat(itemList.items[indexPath.row].item_price!)
         cell.delegate = self
         
         cell.numOfItemInput.text = "\(itemList.items[indexPath.row].item_amount)"
@@ -99,7 +99,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
     }
     
     //number format for price
-    func decimalFormat (num:String)->String{
+    func decimalFormat (_ num:String)->String{
         let numberFormmater = NumberFormatter()
         numberFormmater.numberStyle = NumberFormatter.Style.decimal
         let priceInt = Int(num)
@@ -122,7 +122,7 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
             tableView.deleteRows(at:[indexPath], with: .automatic)
             updateTotalItem()
             
-            self.subTotalPrice.text = decimalFormat(num: "\(subTotal())")
+            self.subTotalPrice.text = decimalFormat("\(subTotal())")
             self.tableView.reloadData()
             
         }
@@ -164,8 +164,8 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         
         try! realm?.commitWrite()
         }
-        cell.productPrice.text = decimalFormat(num: "\(cell.price)")
-        self.subTotalPrice.text = decimalFormat(num:"\(subTotal())")
+        cell.productPrice.text = decimalFormat("\(cell.price)")
+        self.subTotalPrice.text = decimalFormat("\(subTotal())")
     }
     
 

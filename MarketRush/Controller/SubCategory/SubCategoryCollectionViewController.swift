@@ -83,6 +83,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         self.collectionView?.reloadData()
     }
 
+    //total item number update
     func updateTotalItem()
     {
         let myitem = self.itemList.items
@@ -156,7 +157,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         cell.item = DataController.sharedInstance().items?[(indexPath?.row)!]
     
         //new item
-        if (ifIdExists(findId: (cell.item?.item_id)!) == nil){
+        if (ifIdExists((cell.item?.item_id)!) == nil){
 
         ListofItems().saveItem(item_title: (cell.item?.item_title!)!, item_image: (cell.item?.item_image!)!, item_mallName: (cell.item?.item_mallName!)!, item_price: (cell.item?.item_price!)!, item_amount: (cell.item?.item_amount)!, item_id: (cell.item?.item_id!)!)
             
@@ -206,7 +207,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
 
     
     //check product id
-    func ifIdExists(findId: String) -> Item?{
+    func ifIdExists(_ findId: String) -> Item?{
         
         let predicate = NSPredicate(format: "item_id = %@", findId)
         let realm = try? Realm()
