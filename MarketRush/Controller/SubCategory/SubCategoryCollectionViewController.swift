@@ -37,28 +37,28 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         switch selectedCategory {
             
         case Constants.VEGE:
-            return callProductApi(query: "산지직송+채소", start: 1, display: 20)
+            return callProductApi("산지직송+채소", 1, 20)
             
         case Constants.BREAD:
-            return callProductApi(query: "빵", start: 3, display: 20)
+            return callProductApi("빵", 3, 20)
             
         case Constants.DAIRY:
-            return callProductApi(query: "치즈+우유", start: 1, display: 20)
+            return callProductApi("치즈+우유", 1, 20)
             
         case Constants.DRINK:
-            return callProductApi(query: "커피+녹차+홍차+차류", start: 1, display: 20)
+            return callProductApi("커피+녹차+홍차+차류", 1, 20)
             
         case Constants.FRUIT:
-            return callProductApi(query: "과일+산지직송", start: 1, display: 20)
+            return callProductApi("과일+산지직송", 1, 20)
             
         case Constants.MEAT:
-            return callProductApi(query: "축산+산지직송", start: 1, display: 20)
+            return callProductApi("축산+산지직송", 1, 20)
             
         case Constants.NOODLES:
-            return callProductApi(query: "면류+쌀", start: 1, display: 20)
+            return callProductApi("면류+쌀", 1, 20)
             
         default:
-            return callProductApi(query: "견과류", start: 1, display: 20)
+            return callProductApi("견과류", 1, 20)
         }
         
 
@@ -159,6 +159,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
         //new item
         if (ifIdExists((cell.item?.item_id)!) == nil){
 
+        //save chosen items
         ListofItems().saveItem(item_title: (cell.item?.item_title!)!, item_image: (cell.item?.item_image!)!, item_mallName: (cell.item?.item_mallName!)!, item_price: (cell.item?.item_price!)!, item_amount: (cell.item?.item_amount)!, item_id: (cell.item?.item_id!)!)
             
             let string = cell.item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
@@ -170,10 +171,7 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             backView?.layer.cornerRadius = 10.0
             
             // Change Title With Color and Font:
-            let myTitle  = "상품이 장바구니에 담겼습니다."
-            var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: myTitle as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 16.0)!])
-            alertController.setValue(myMutableString, forKey: "attributedTitle")
+            alertController.setValue(changeTitleSet(), forKey: "attributedTitle")
             
             // Change Message With Color and Font
             let message  = string
@@ -204,7 +202,6 @@ class SubCategoryCollectionViewController: UICollectionViewController, UICollect
             }
         
         }
-
     
     //check product id
     func ifIdExists(_ findId: String) -> Item?{

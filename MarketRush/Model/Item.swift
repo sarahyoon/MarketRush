@@ -59,7 +59,7 @@ class Item: Object, Mappable{
 
 
 //api call
-func callProductApi(query:String, start:NSNumber, display:NSNumber)
+func callProductApi(_ query:String, _ start:NSNumber, _ display:NSNumber)
 {
     let shoppingURL = "https://openapi.naver.com/v1/search/shop.json"
     let headers = [

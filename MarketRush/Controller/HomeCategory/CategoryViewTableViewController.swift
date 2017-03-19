@@ -56,7 +56,7 @@ class CategoryViewTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
         
         //Send query for today's product
-        callProductApi(query: "신선식품+산지직송", start: 1, display: 20)
+        callProductApi("신선식품+산지직송", 1, 20)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white

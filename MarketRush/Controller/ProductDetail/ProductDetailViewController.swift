@@ -38,6 +38,8 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.itemList.items = realm?.objects(Item.self)
         self.view.backgroundColor = UIColor(red: 239/255, green: 240/255, blue: 241/255, alpha: 0.4)
     }
+
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return section.count
@@ -91,27 +93,17 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             ListofItems().saveItem(item_title: item.item_title!, item_image: item.item_image!, item_mallName: item.item_mallName!, item_price: item.item_price!, item_amount: item.item_amount, item_id: item.item_id!)
             
-            let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
-            
-            let alertController = UIAlertController(title: "상품이 장바구니에 담겼습니다.", message: string, preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "상품이 장바구니에 담겼습니다.", message: changeMessageSet().string, preferredStyle: UIAlertControllerStyle.alert)
             
             // Background color.
             let backView = alertController.view.subviews.last?.subviews.last
             backView?.layer.cornerRadius = 10.0
             
             // Change Title With Color and Font:
-            let myTitle  = "상품이 장바구니에 담겼습니다."
-            var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: myTitle as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 16.0)!])
-            alertController.setValue(myMutableString, forKey: "attributedTitle")
+            alertController.setValue(changeTitleSet(), forKey: "attributedTitle")
             
             // Change Message With Color and Font
-            let message  = string
-            var messageMutableString = NSMutableAttributedString()
-            messageMutableString = NSMutableAttributedString(string: message! as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!])
-            messageMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0), range: NSRange(location:0,length:(message?.characters.count)!))
-            
-            alertController.setValue(messageMutableString, forKey: "attributedMessage")
+            alertController.setValue(changeMessageSet(), forKey: "attributedMessage")
             
             // Action.
             let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: nil)
@@ -136,6 +128,19 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
             present(alertController, animated: true, completion: nil)
         }
 
+    }
+    
+    //change message color and font
+    func changeMessageSet() -> NSMutableAttributedString{
+        let string = item?.item_title?.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+        
+        let message  = string
+        var messageMutableString = NSMutableAttributedString()
+        messageMutableString = NSMutableAttributedString(string: message! as String, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!])
+        
+        messageMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 55/255, green: 142/255, blue: 109/255, alpha: 1.0), range: NSRange(location:0,length:(message?.characters.count)!))
+        
+        return messageMutableString
     }
     
     func updateTotalItem()

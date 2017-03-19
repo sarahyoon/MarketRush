@@ -56,6 +56,8 @@ class DetailShoppingListViewController: UIViewController, UITableViewDataSource,
         
         self.dateLabelView.bounds = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 60)
         self.dateLabelView.tintColor = UIColor.lightGray
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveProductInfo(noti:)), name: DidReceiveProductInfo, object: nil)
 
     }
     
