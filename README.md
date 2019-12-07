@@ -24,7 +24,8 @@
 * MVC/Singleton Pattern
 
 ## Demo Video 
-[![Alt text for your video](http://i64.tinypic.com/34qn1px.png)](https://youtu.be/EgD8irb_57Y)
+[![Video Label](https://i9.ytimg.com/vi/EgD8irb_57Y/mq2.jpg?sqp=CJeSre8F&rs=AOn4CLB2plCFNXY4DHGOhL3V6ag6f0a-Ow)](https://youtu.be/EgD8irb_57Y)
+
 ----
 ## Next Step
 * Improve Search Tool based on User Experience 
